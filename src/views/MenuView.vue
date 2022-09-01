@@ -1,14 +1,15 @@
 <template>
   <div class="padding-navbar">
-    <HeaderAbout />
+    <Menu />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
-import HeaderAbout from "@/components/HeaderAbout.vue";
+import Menu from "@/components/Menu.vue";
+
 export default defineComponent({
-  components: { HeaderAbout },
+  components: { Menu },
   setup() {
     //
   },

@@ -1,14 +1,15 @@
 <template>
   <div class="padding-navbar">
-    <HeaderAbout />
+    <NewUser />
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import NewUser from "../components/NewUser.vue";
 import { defineComponent } from "vue";
-import HeaderAbout from "@/components/HeaderAbout.vue";
+
 export default defineComponent({
-  components: { HeaderAbout },
+  components: { NewUser },
   setup() {
     //
   },
