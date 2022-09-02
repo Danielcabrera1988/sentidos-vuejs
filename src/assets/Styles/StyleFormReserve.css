@@ -1,34 +1,61 @@
-.reserva__container__form {
-  height: auto;
-  width: 400px;
-  padding-top: 20px;
-  margin: 0 30px;
-  box-shadow: 5px 8px 15px black;
-}
-a {
-  color: black;
-  text-decoration: none;
-  transition: 0.5s color;
+.reserva__container {
+  font-family: inherit;
+  margin-top: 70px;
+  display: flex;
+  background-color: aqua;
 }
 
-.reserva__container__titulo {
-  padding: 10px 30px;
+.reserva__container h1{
+  position: absolute;
+  z-index: 10;
+  color: whitesmoke;
+  font-family: inherit;
+  top: 100px;
+  left: 1%;
+  margin: auto;
 }
-textarea {
-  background-color: aqua;
-  border: 2pxs solid black;
+
+.reserva__container p{
+  color: whitesmoke;
+  position: absolute;
+  z-index: 10;
+  top: 170px;
+  max-width: 600px;
+  font-family: inherit;
+  font-weight: 400;
+  text-align: justify;
+  left: 1%;
+  margin: auto;
 }
+
+.reserva__container h2 {
+  color: whitesmoke;
+  top: 160px;
+  left: 40%;
+  margin: auto;
+  position: absolute;
+  z-index: 10;
+}
+
+.reserva__container__form {
+  width: 100%;
+  max-width: 500px;
+  top: 200px;
+  left: 40%;
+  box-shadow: 5px 8px 15px black;
+  position: absolute;
+  z-index: 10;
+}
+
+
 button {
-  height: 30px;
-  width: 50px;
+  font-weight: 500;
   margin-left: 40px;
   margin-bottom: 20px;
+  transition: 0.5s;
 }
 button:hover {
-  color: blue;
-}
-input {
-  margin: 10px;
+  color: white;
 }
 .mensajeError {
   color: rgb(230, 0, 0);

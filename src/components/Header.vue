@@ -11,7 +11,7 @@
         </p>
       </div>
       <div class="home__carousel__box">
-        <v-carousel v-model="model">
+        <v-carousel v-model="model" :cycle="true">
           <v-carousel-item
             :src="imagen"
             v-for="imagen in imagenes"
@@ -24,14 +24,10 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, onMounted } from "vue";
-import ScrollReveal from "scrollreveal";
+import { defineComponent, ref } from "vue";
+
 export default defineComponent({
   setup() {
-    
-    onMounted(() => {
-      ScrollReveal().reveal(".home", { delay: 200 });
-    });
 
     const imagenes = [
       require("@/assets/Img/entrada.jpg"),

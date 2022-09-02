@@ -43,15 +43,9 @@
 </template>
 
 <script >
-import { onMounted, ref } from "vue";
-import ScrollReveal from 'scrollreveal';
+import { ref } from "vue";
 export default {
   setup() {
-
-    onMounted (() => {
-      ScrollReveal().reveal('.user__container', { delay: 200 })
-    });
-
     const form = ref(null);
     const formUser = ref({
       name: "",

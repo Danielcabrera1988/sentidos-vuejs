@@ -4,14 +4,16 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import NewUser from "../components/NewUser.vue";
-import { defineComponent } from "vue";
-
+import { defineComponent, onMounted } from "vue";
+import ScrollReveal from 'scrollreveal'
 export default defineComponent({
   components: { NewUser },
   setup() {
-    //
+    onMounted(() => {
+      ScrollReveal().reveal(".padding-navbar", { delay: 200, reset: true });
+    });
   },
 });
 </script>

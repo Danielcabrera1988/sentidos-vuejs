@@ -1,22 +1,22 @@
 .menu__container {
   width: 90%;
   max-width: 1366px;
+  margin: 0 auto;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
 }
 
 .menu__container__header {
   width: 90%;
   max-width: 1366px;
-  height: 100%;
   margin: 1% auto;
   display: flex;
   align-items: center;
 }
 .menu__container__header p {
   position: absolute;
-  width: 80%;
+  width: 65%;
   font-weight: 500;
   max-width: 1366px;
   top: 20%;
@@ -42,7 +42,6 @@
 }
 
 .cards__conteiners img {
-  position: absolute;
   z-index: 0;
 }
 .cards__conteiners p {

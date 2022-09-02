@@ -8,7 +8,9 @@
         <router-link class="nav__menu__item__link" to="/menu">Menu</router-link>
       </li>
       <li class="nav__menu__item">
-        <router-link class="nav__menu__item__link" to="reservas">Reservas</router-link>
+        <router-link class="nav__menu__item__link" to="reservas"
+          >Reservas</router-link
+        >
       </li>
       <li class="nav__menu__item">
         <router-link class="nav__menu__item__link" to="/blog">Blog</router-link>

@@ -6,7 +6,7 @@
         platos son elavorados con los mal altos estandares de cocina y por
         personal altamente capacitado
       </p>
-      <v-img :src="require('../assets/Img/banner-menu.jpg')" />      
+      <v-img :src="require('../assets/Img/banner-menu.jpg')" />
     </div>
     <div class="menu__cards">
       <v-row>
@@ -29,14 +29,9 @@
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
-import ScrollReveal from "scrollreveal";
+import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
-    onMounted(() => {
-      ScrollReveal().reveal(".menu__cards", { delay: 200 });
-    });
-
     const comidas = [
       {
         nombre: "Cangreburguer",

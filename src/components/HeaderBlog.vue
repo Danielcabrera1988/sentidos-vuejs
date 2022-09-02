@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
-import ScrollReveal from "scrollreveal";
+import { defineComponent } from "vue";
 export default defineComponent({
   setup() {
-    onMounted(() => {
-      ScrollReveal().reveal(".blog__container", { delay: 200 });
-    });
+    //
   },
 });
 </script>
