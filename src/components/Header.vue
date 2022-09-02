@@ -36,9 +36,8 @@ export default defineComponent({
     const imagenes = [
       require("@/assets/Img/entrada.jpg"),
       require("@/assets/Img/living-central.jpg"),
-      require("@/assets/Img/c3.jpg"),
-      require("@/assets/Img/c4.jpg"),
-      require("@/assets/Img/c5.jpg"),
+      require("@/assets/Img/c3b.jpg"),
+      require("@/assets/Img/c4b.jpg"),
     ];
     const model = ref(0); //ref se utiliza para cuando tenemos variables reactivas, hay que importar de vue
     return {

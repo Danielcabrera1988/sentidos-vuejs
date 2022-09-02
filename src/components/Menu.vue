@@ -1,34 +1,42 @@
 <template>
-  <div class="menu__cards">
-    <v-row>
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-        v-for="(comida, i) in comidas"
-        :key="i"
-      >
-        <v-card class="cards__conteiners">
-          <p>{{ comida.nombre }}</p>
-          <v-img :src="require(`@/assets/Img/${comida.imagen}`)" />          
-        </v-card>
-        
-      </v-col>
-    </v-row>
+  <div class="menu__container">
+    <div class="menu__container__header">
+      <p>
+        La mejor combinación de sabores la podes encontrar acá. Todos nuestros
+        platos son elavorados con los mal altos estandares de cocina y por
+        personal altamente capacitado
+      </p>
+      <v-img :src="require('../assets/Img/banner-menu.jpg')" />      
+    </div>
+    <div class="menu__cards">
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="(comida, i) in comidas"
+          :key="i"
+        >
+          <v-card class="cards__conteiners">
+            <p>{{ comida.nombre }}</p>
+            <v-img :src="require(`@/assets/Img/${comida.imagen}`)" />
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 
 <script>
 import { defineComponent, onMounted } from "vue";
-import ScrollReveal from 'scrollreveal';
+import ScrollReveal from "scrollreveal";
 export default defineComponent({
   setup() {
-    
-    onMounted (() => {
-      ScrollReveal().reveal('.menu__cards', { delay: 200 })
+    onMounted(() => {
+      ScrollReveal().reveal(".menu__cards", { delay: 200 });
     });
-    
+
     const comidas = [
       {
         nombre: "Cangreburguer",
