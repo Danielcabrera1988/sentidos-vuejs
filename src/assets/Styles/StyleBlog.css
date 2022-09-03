@@ -1,4 +1,44 @@
-.blog__container{
-    margin-top: 70px;
-    background-color: aqua;
+.blog__container {
+  margin-top: 70px;
+  height: 100vh;
+  display: flex;
+}
+.blog__container__main {
+  margin: 1%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.blog__comments__container {
+  width: 45%;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+}
+.comments__cards {
+  margin: 20px 10px;
+}
+.comments__cards__inverse{
+  margin: 20px 10px;
+  text-align: end;
+}
+
+.blog__calification__container {
+  width: 30%;
+  margin: 1% 1%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+
+}
+.calification__container {  
+  box-shadow: 5px 8px 15px black;
+  border-radius: 10px;
+}
+.calification {
+  display: flex;
+  flex-direction: row;
+  margin: 5% 10%;
+  justify-content: space-between;
+  align-items: center;
 }

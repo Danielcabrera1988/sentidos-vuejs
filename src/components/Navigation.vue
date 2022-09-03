@@ -20,7 +20,9 @@
     <!-- Right Nav -->
     <ul class="nav__menu__right">
       <li class="nav__menu__item">
+
         <router-link class="nav__menu__item__link" to="/newUser">
+          Login
           <v-icon color="whitesmoke">mdi-account</v-icon>
         </router-link>
       </li>
