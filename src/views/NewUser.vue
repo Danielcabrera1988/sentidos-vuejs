@@ -6,14 +6,11 @@
 
 <script>
 import NewUser from "../components/NewUser.vue";
-import { defineComponent, onMounted } from "vue";
-import ScrollReveal from 'scrollreveal'
+import { defineComponent  } from "vue";
 export default defineComponent({
   components: { NewUser },
   setup() {
-    onMounted(() => {
-      ScrollReveal().reveal(".padding-navbar", { delay: 200, reset: true });
-    });
+    //
   },
 });
 </script>

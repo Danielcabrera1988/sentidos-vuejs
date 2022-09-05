@@ -1,20 +1,17 @@
 <template>
-  <div>
+  <div class="padding-navbar">
     <FormularioReserva />
   </div>
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
-import ScrollReveal from 'scrollreveal'
+import { defineComponent } from "vue";
 import FormularioReserva from "../components/FormularioReserva.vue";
 
 export default defineComponent({
   components: { FormularioReserva },
   setup() {
-    onMounted(() => {
-      ScrollReveal().reveal(".padding-navbar", { delay: 200, reset: true });
-    });
+    //
   },
 });
 </script>

@@ -1,6 +1,6 @@
 .general {
   background-image: var(--main-bg-color);
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-monse);
 }
 /*margin general de las vistas*/
 .padding-navbar {
@@ -10,6 +10,7 @@
 @import url("http://fonts.cdnfonts.com/css/montserrat");
 
 :root{
+  --font-monse: "Montserrat", sans-serif;
   --main-bg-color: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);;
   --color-one: #f28E85;
   --color-two: #F294C8;
