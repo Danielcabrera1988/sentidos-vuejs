@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () =>import("../views/HomeView.vue"),
   },
   {
     path: "/menu",
@@ -26,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/newUser",
     name: "newUser",
     component: () => import("../views/NewUser.vue"),
+  },
+  {
+    path: "/calification",
+    name: "calification",
+    component: () => import("../views/CalificationView.vue"),
   },
 ];
 

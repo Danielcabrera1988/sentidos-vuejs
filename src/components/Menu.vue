@@ -6,8 +6,12 @@
       <p>
         La mejor combinación de sabores la podes encontrar acá. Todos nuestros
         platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum rem asperiores quod molestias amet molestiae deserunt magni illum, eum alias ratione est veniam esse atque sapiente quos vitae eius ad quibusdam neque. Saepe voluptates quo reprehenderit porro aliquid nobis voluptatem fuga et, veniam, exercitationem, voluptate cum debitis perferendis obcaecati accusantium?
+        personal altamente capacitado. Lorem ipsum dolor sit, amet consectetur
+        adipisicing elit. Voluptatum rem asperiores quod molestias amet
+        molestiae deserunt magni illum, eum alias ratione est veniam esse atque
+        sapiente quos vitae eius ad quibusdam neque. Saepe voluptates quo
+        reprehenderit porro aliquid nobis voluptatem fuga et, veniam,
+        exercitationem, voluptate cum debitis perferendis obcaecati accusantium?
       </p>
     </div>
     <div class="menu__container__qr">
