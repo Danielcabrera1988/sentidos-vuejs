@@ -18,8 +18,10 @@
     </div>
     <div class="menu__cards">
       <h3 class="menu__title">¡Algunas de nuestas delicias! 😋</h3>
-      <p class="menu__description">Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
-        completo desde el QR y a disfrutar de una lluvia de esquisitos sabores.</p>
+      <p class="menu__description">
+        Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
+        completo desde el QR y a disfrutar de una lluvia de esquisitos sabores.
+      </p>
       <v-row>
         <v-col
           cols="12"
@@ -39,11 +41,9 @@
             </v-card-subtitle>
 
             <v-card-actions>
+              <v-btn style="font-size: 10px; margin-left: 15px"  :icon="comida.show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="changeShow(comida)" color="orange lighten-2" text> Leer más... </v-btn>
               <v-spacer></v-spacer>
-              <v-btn
-                :icon="comida.show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="changeShow(comida)"
-              ></v-btn>
+              <v-btn :icon="comida.show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="changeShow(comida)"></v-btn>
             </v-card-actions>
             <v-expand-transition>
               <div v-show="comida.show">
