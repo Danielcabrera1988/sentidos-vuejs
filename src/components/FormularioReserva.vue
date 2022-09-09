@@ -16,7 +16,7 @@
       </p>
     </div>
     <div class="reserva__selection__mesa">
-      <!-- algo para sellecionar la mesa y que quede seleccionado o referencia a un numero de mesa para posteriormente guardar en el formulario de reserva -->
+      <!-- algo para sellecionar la mesa y que quede seleccionado o referencia a un numero de mesa para posteriormente guardar en elll formulario de reserva -->
       
     </div>
     <div class="reserva__form">
