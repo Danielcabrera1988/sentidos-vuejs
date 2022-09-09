@@ -21,10 +21,9 @@
     <ul class="nav__menu__right">
       <li class="nav__menu__item">
 
-        <router-link class="nav__menu__item__link" to="/newUser">
-          Login
-          <v-icon color="whitesmoke">mdi-account</v-icon>
-        </router-link>
+        <router-link class="nav__menu__item__link link__login" to="/login">Login</router-link>
+        <router-link class="nav__menu__item__link link__register" to="/newUser">Register</router-link>
+        
       </li>
     </ul>
   </nav>

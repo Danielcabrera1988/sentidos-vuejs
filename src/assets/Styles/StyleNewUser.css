@@ -1,34 +1,29 @@
+/* media movil */
 .user__container {
   width: 100%;
-  height: 100vh;
-  margin: 0;
+  height: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  border-radius: 45px;
+  align-items: center;
 }
-
 .user__container__form {
   height: auto;
-  width: 400px;
-  padding-top: 20px;
-  margin: 0 30px;
+  width: 90%;
+  max-width: 400px;
+  margin: 5% auto;
   box-shadow: 5px 8px 15px black;
 }
-a {
-  color: black;
-  text-decoration: none;
-  transition: 0.5s color;
-}
-
 .user__container__titulo {
-  padding: 10px 30px;
+  margin: 5% auto 0 auto;
 }
-
 button {
   height: 30px;
   width: 50px;
   margin-left: 40px;
   margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
 }
 button:hover {
   color: blue;

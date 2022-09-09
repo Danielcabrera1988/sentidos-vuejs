@@ -1,5 +1,5 @@
 <template>
-  <div class="padding-navbar">
+  <div class="margin__navbar">
     <Header />
     <h1></h1>
   </div>
@@ -15,3 +15,6 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+@import "../assets/Styles/StyleGral.css";
+</style>

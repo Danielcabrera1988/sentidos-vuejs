@@ -1,0 +1,44 @@
+.reserva__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reserva__img{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reserva__img__logo{
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.reserva__selection{
+  width: 95%;
+  max-width: 300px;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+.reserva__form {
+  width: 95%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+button {
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+button:hover {
+  color: white;
+}
+.mensajeError {
+  color: rgb(230, 0, 0);
+}

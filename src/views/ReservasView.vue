@@ -1,5 +1,5 @@
 <template>
-  <div class="padding-navbar">
+  <div class="margin__navbar">
     <FormularioReserva />
   </div>
 </template>
@@ -17,5 +17,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import "../assets/Styles/StyleFormReserve.css";
+@import "../assets/Styles/StyleGral.css";
 </style>

@@ -1,14 +1,16 @@
 <template>
   <div class="margin__navbar">
-    <NewUser />
+    <Login />
   </div>
 </template>
 
 <script>
-import NewUser from "../components/NewUser.vue";
-import { defineComponent  } from "vue";
+import { defineComponent } from "vue";
+import Login from "@/components/Login.vue";
 export default defineComponent({
-  components: { NewUser },
+  components: {
+    Login,
+  },
   setup() {
     //
   },
