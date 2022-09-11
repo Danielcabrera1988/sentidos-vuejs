@@ -1,25 +1,26 @@
 <template>
-  <div class="login__container">    
-        <h3>Login</h3>    
-        <!-- <v-img :src="require()"> </v-img> -->
+  <div class="login__container">
+    <h1>Sentidos</h1>
     <div class="login__form">
       <v-form ref="form">
         <v-text-field
-          variant="outlined"
+          class="form__input"
+          prepend-icon="mdi-email-outline"
           v-model="formUser.email"
           :rules="emailRules"
           label="Email"
         ></v-text-field>
 
         <v-text-field
+          class="form__input"
+          prepend-icon="mdi-lock"
           type="password"
-          variant="outlined"
           v-model="formUser.password"
           :rules="passwordlRules"
           label="Password"
         ></v-text-field>
 
-        <button type="submit">Login</button>
+        <button class="form__btn" type="submit">Login</button>
       </v-form>
     </div>
   </div>
@@ -50,5 +51,6 @@ export default {
 };
 </script>
 <style scoped>
-@import "../assets/Styles/StyleLogin.css";
+@import "@/assets/Styles/StyleLogin.css";
+@import url('http://fonts.cdnfonts.com/css/malibu-2');                
 </style>

@@ -26,7 +26,7 @@
   font-size: 12px;
 }
 .comments__cards {
-  width: 95%;
+  width: 90%;
   margin: 2% 5% 2% 0;
   box-shadow: -3px 3px 5px black;
   border: 1px solid;
@@ -40,7 +40,7 @@
   height: 35px;
 }
 .comments__cards__inverse {
-  width: 95%;
+  width: 90%;
   margin: 0 0 0 5%;
   text-align: end;
   box-shadow: 3px 3px 5px black;
@@ -130,7 +130,7 @@
     font-size: 16px;
   }
   .comments__cards {
-    width: 95%;
+    width: 90%;
     margin: 2% 5% 2% 0;
     box-shadow: -3px 3px 5px black;
     border: 1px solid;
@@ -144,7 +144,7 @@
     height: 35px;
   }
   .comments__cards__inverse {
-    width: 95%;
+    width: 90%;
     margin: 0 0 0 5%;
     text-align: end;
     box-shadow: 3px 3px 5px black;
@@ -238,7 +238,7 @@
     font-size: 16px;
   }
   .comments__cards {
-    width: 95%;
+    width: 90%;
     max-width: 550px;
     margin: 2% 5% 2% 0;
     box-shadow: -3px 3px 5px black;
@@ -253,7 +253,7 @@
     height: 35px;
   }
   .comments__cards__inverse {
-    width: 95%;
+    width: 90%;
     max-width: 550px;
     margin: 0 0 0 5%;
     text-align: end;

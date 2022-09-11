@@ -6,16 +6,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(@/assets/Img/fondoregistro.jpg);
+  background-position: bottom;
+  color: white;
 }
 .user__container__form {
-  height: auto;
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 500px;
+  border: 3px solid white;
+  border-radius: 10px;
   margin: 5% auto;
-  box-shadow: 5px 8px 15px black;
+  padding: 3% 3%;
 }
-.user__container__titulo {
+.user__container h1 {
   margin: 5% auto 0 auto;
+  font-family: 'Bluetea', sans-serif;
+  font-weight: 100;
+                                                
 }
 button {
   height: 30px;
@@ -24,6 +31,13 @@ button {
   margin-bottom: 20px;
   font-size: 18px;
   font-weight: 600;
+}
+.form__btn {
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
 }
 button:hover {
   color: blue;

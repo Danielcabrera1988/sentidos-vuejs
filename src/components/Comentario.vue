@@ -1,6 +1,6 @@
 <template>
   <div class="comment__main">
-    <h3>¡Gracias por dejar tu comentario!</h3>
+    <h3 class="animate__animated animate__bounce">¡Gracias por dejar tu comentario!</h3>
     <div class="comment__msg">
       <v-textarea
         :counter="maxCaracter"
@@ -49,8 +49,8 @@
       </div>
     </div>
     <div class="comment__btn__action">
-      <v-btn to="/blog">Volver</v-btn>
-      <v-btn type="submit" action="metodoParaCalificar">Enviar</v-btn>
+      <v-btn class="btn__back" to="/blog">Volver</v-btn>
+      <v-btn class="btn__submit" type="submit" action="metodoParaCalificar">Enviar</v-btn>
     </div>
   </div>
 </template>

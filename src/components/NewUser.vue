@@ -1,10 +1,12 @@
 <template>
   <div class="user__container">
-    <h1 class="user__container__titulo">Nuevo Usuario</h1>
+    <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
     <div class="user__container__form">
       <v-form ref="form" @submit.prevent="submit">
+
         <v-text-field
           v-model="formUser.name"
+          prepend-icon="mdi-account"
           :counter="maxName"
           :rules="nameRules"
           label="Nombre y Apellido"
@@ -12,6 +14,7 @@
 
         <v-text-field
           v-model="formUser.email"
+          prepend-icon="mdi-email-outline"
           :rules="emailRules"
           label="E-mail"
         ></v-text-field>
@@ -36,7 +39,7 @@
         >
         </v-text-field>
 
-        <button type="submit">Enviar</button>
+        <button class="form__btn" type="submit">Enviar</button>
       </v-form>
     </div>
   </div>
@@ -101,4 +104,5 @@ export default {
 </script>
 <style scoped>
 @import "../assets/Styles/StyleNewUser.css";
+@import url('http://fonts.cdnfonts.com/css/bluetea');
 </style>
