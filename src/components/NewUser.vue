@@ -1,9 +1,9 @@
 <template>
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
+    <img :src="require('../assets/Img/fondoregistro.jpg')" alt="" />
     <div class="user__container__form">
       <v-form ref="form" @submit.prevent="submit">
-
         <v-text-field
           v-model="formUser.name"
           prepend-icon="mdi-account"
@@ -104,5 +104,5 @@ export default {
 </script>
 <style scoped>
 @import "../assets/Styles/StyleNewUser.css";
-@import url('http://fonts.cdnfonts.com/css/bluetea');
+@import url("http://fonts.cdnfonts.com/css/bluetea");
 </style>
