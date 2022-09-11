@@ -24,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/newUser",
     name: "newUser",
-    component: () => import("../views/NewUser.vue"),
+    component: () => import("../views/NewUserView.vue"),
   },
   {
     path: "/calification",
