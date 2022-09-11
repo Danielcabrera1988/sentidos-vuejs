@@ -9,7 +9,7 @@
   color: white;
 }
 .login__container h1 {
-  font-family: "Malibu", sans-serif;
+  font-family: 'Malibu';
   font-size: 68px;
   top: 5%;
   position: absolute;
@@ -39,3 +39,4 @@
   align-items: center;
   font-weight: 500;
 }
+@import "@/assets/common/FontMalibu.css";

@@ -52,6 +52,5 @@ export default {
 };
 </script>
 <style scoped>
-@import "@/assets/Styles/StyleLogin.css";
-@import url('http://fonts.cdnfonts.com/css/malibu-2');                
+@import "@/assets/Styles/StyleLogin.css";                
 </style>

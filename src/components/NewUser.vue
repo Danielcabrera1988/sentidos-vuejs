@@ -104,5 +104,4 @@ export default {
 </script>
 <style scoped>
 @import "../assets/Styles/StyleNewUser.css";
-@import url("http://fonts.cdnfonts.com/css/bluetea");
 </style>
