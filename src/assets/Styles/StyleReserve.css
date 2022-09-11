@@ -4,24 +4,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  color: white;
+  
 }
 .reserva__img{
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: absolute;
 }
 .reserva__img__logo{
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto;
+  width: 50%;
+  max-width: 250px;
 }
 .reserva__selection{
+  position: absolute;
   width: 95%;
   max-width: 300px;
-  margin: 0 auto;
+  top: 20%;
   align-items: center;
   text-align: center;
+}
+.reserva__selection h2{
+  font-family: 'Bluetea', sans-serif;
+  font-weight: 100;
+  margin: 2% auto;
 }
 .reserva__form {
   width: 95%;
@@ -29,15 +38,21 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  position: absolute;
+  top: 50%;
 }
-
+.reserva__form h2{
+  font-family: 'Bluetea', sans-serif;
+  font-weight: 100;
+  margin: 2% auto;
+}
 button {
   font-weight: 500;
   margin-bottom: 20px;
   transition: 0.5s;
 }
 button:hover {
-  color: white;
+  color: blue;
 }
 .mensajeError {
   color: rgb(230, 0, 0);

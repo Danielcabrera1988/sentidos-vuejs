@@ -1,7 +1,8 @@
 <template>
   <div class="reserva__container">
+    <img :src="require('../assets/Img/banner-reserva2.jpg')" alt="">
     <div class="reserva__img">
-      <v-img class="reserva__img__logo" :src="require('../assets/Img/LogoSentidos2.png')"></v-img>
+      <img class="reserva__img__logo" :src="require('../assets/Img/LogoSentidos2.png')"/>
     </div>
     <div class="reserva__selection">
       <h2>Sentidos Casa de Te y Restaurant</h2>
