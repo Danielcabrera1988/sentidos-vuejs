@@ -1,7 +1,7 @@
 <template>
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
-    <img :src="require('../assets/Img/fondoregistro.jpg')" alt="" />
+    <img class="user__container__img" :src="require('../assets/Img/fondoregistro.jpg')" alt="" />
     <div class="user__container__form">
       <v-form ref="form" @submit.prevent="submit">
         <v-text-field
@@ -42,6 +42,7 @@
         <button class="form__btn" type="submit">Enviar</button>
       </v-form>
     </div>
+    <h3>¡Gracias por formar parte de nosotros!</h3>
   </div>
 </template>
 

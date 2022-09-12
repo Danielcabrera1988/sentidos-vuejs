@@ -1,5 +1,5 @@
 <template>
-    <div class="margin__navbar">
+    <div>
         <Comentario/>
     </div>
 </template>

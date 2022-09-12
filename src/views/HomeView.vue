@@ -1,5 +1,5 @@
 <template>
-  <div class="margin__navbar">
+  <div>
     <Header />
     <h1></h1>
   </div>

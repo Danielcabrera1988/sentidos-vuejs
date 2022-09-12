@@ -1,7 +1,8 @@
 <template>
   <div class="login__container">
     <h1 class="animate__animated animate__zoomIn">Sentidos</h1>
-    <img :src="require('../assets/Img/fondoLogin.jpg')"/>
+    <h3 class="animate__animated animate__zoomIn">Restaurante y casa de te</h3>
+    <img class="login__container__img" :src="require('../assets/Img/fondoLogin.jpg')"/>
     <div class="login__form">
       <v-form ref="form">
         <v-text-field

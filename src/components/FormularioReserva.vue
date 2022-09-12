@@ -1,11 +1,11 @@
 <template>
   <div class="reserva__container">
-    <img :src="require('../assets/Img/banner-reserva2.jpg')" alt="">
+    <img class="reserva__container__img" :src="require('../assets/Img/banner-reserva2.jpg')" alt="">
     <div class="reserva__img">
       <img class="reserva__img__logo" :src="require('../assets/Img/LogoSentidos2.png')"/>
     </div>
     <div class="reserva__selection">
-      <h2>Sentidos Casa de Te y Restaurant</h2>
+      <h2>Sentidos Restaurante y casa de te</h2>
       <p>
         Sleccione una fecha:
         <v-text-field type="date" variant="outlined" v-model="reservaUser.fecha" ></v-text-field>

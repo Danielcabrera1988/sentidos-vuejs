@@ -2,10 +2,7 @@
   background-image: var(--main-bg-color);
   font-family: var(--font-monse);
 }
-/*margin general de las vistas*/
-.margin__navbar {
-  margin-top: 70px;
-}
+
 
 @import url("http://fonts.cdnfonts.com/css/montserrat");
 

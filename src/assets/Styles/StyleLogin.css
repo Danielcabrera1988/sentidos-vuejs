@@ -1,7 +1,4 @@
 .login__container {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,8 +8,20 @@
 .login__container h1 {
   font-family: 'Malibu';
   font-size: 68px;
-  top: 5%;
+  top: 3%;
   position: absolute;
+}
+.login__container h3 {
+  font-family: 'Malibu';
+  font-size: 48px;
+  top: 15%;
+  position: absolute;
+  animation-delay: 1s;
+}
+.login__container__img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
 }
 .login__form {
   width: 90%;
@@ -21,7 +30,7 @@
   padding: 1% 3%;
   border: 3px solid;
   border-radius: 10px;
-  top: 20%;
+  top: 25%;
   position: absolute;
   display: flex;
   flex-direction: column;

@@ -1,34 +1,57 @@
 <template>
   <nav class="nav__main">
-    <ul class="nav__main__nav__menu">
-      <li class="nav__menu__item">
-        <router-link class="nav__menu__item__link" to="/">Home</router-link>
-      </li>
-      <li class="nav__menu__item">
-        <router-link class="nav__menu__item__link" to="/menu">Menu</router-link>
-      </li>
-      <li class="nav__menu__item">
-        <router-link class="nav__menu__item__link" to="reservas"
-          >Reservas</router-link
-        >
-      </li>
-      <li class="nav__menu__item">
-        <router-link class="nav__menu__item__link" to="/blog">Blog</router-link>
-      </li>
-    </ul>
+    <div class="nav__title">Sentidos</div>
 
-    <!-- Right Nav -->
-    <ul class="nav__menu__right">
-      <li class="nav__menu__item">
+    <v-btn class="toggle__btn" @click="toggleBtn" style="color: black"><v-icon>mdi-menu</v-icon></v-btn>
 
-        <router-link class="nav__menu__item__link link__login" to="/login">Login</router-link>
-        <router-link class="nav__menu__item__link link__register" to="/newUser">Register</router-link>
-        
-      </li>
-    </ul>
+    <div class="nav__links" :class="active ? 'active' : ''">
+      <!-- NavBar -->
+      <ul>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/menu">Menu</router-link>
+        </li>
+        <li>
+          <router-link to="/reservas">Reservas</router-link>
+        </li>
+        <li>
+          <router-link to="/blog">Blog</router-link>
+        </li>
+        <li>
+          <router-link to="/login">Login</router-link>
+        </li>
+        <li>
+          <router-link to="/newUser">Sing in</router-link>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  setup() {
+
+    const active = ref(false);
+    const toggleBtn = () => {
+      active.value = !active.value;
+    };
+
+    return {
+      active,
+      toggleBtn,
+    };
+  },
+});
+</script>
+
+
+
+
 <style  scoped>
 @import "../assets/Styles/StyleNav.css";
-</style>
+</style>s

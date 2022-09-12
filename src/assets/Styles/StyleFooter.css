@@ -1,28 +1,31 @@
-/*For Movile*/
-/* Small devices (portrait tablets and large phones, 480px and lower) */
-@media (max-width: 480px) {
+/*View Movile*/
   .footer {
-    width: 100%;
-    height: 180px;
-    background: rgb(158, 150, 208);
-    /*background: #2f3640;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #2f3640;
     color: #616161;
   }
   .footer__social {
     text-align: center;
     height: 80%;
   }
-  .footer__social h3 {
-    font-size: 1rem;
+  .footer h3 {
+    font-size: 12px;
   }
   .footer__social__links i {
     font-size: 2.5rem;
   }
+  .footer__social__links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   .footer__social__links a{
-    font-size: 1.5rem;
-    margin: 0 1%;
     color: #616161;    
     text-decoration: none;
+    margin: 0 8px;    
   }
   #ref-face:hover {
     color: blue;
@@ -30,85 +33,3 @@
   #ref-insta:hover {
     color: rgb(197, 78, 128);
   }
-}
-/* Medium devices (landscape tablets, 481 to 768px) */
-/* For desktop: */
-@media (max-width: 768px) {
-  .footer {
-    width: 100%;
-    height: 100px;
-    background: #2f3640;
-    color: #616161;
-  }
-  .Footer__social {
-    text-align: center;
-  }
-  .footer__social__links i {
-    font-size: 2.5rem;
-  }
-  .footer__social__links a{
-    font-size: 1.5rem;
-    margin: 0 1%;
-    color: #616161;    
-    text-decoration: none;
-  }
-  #ref-face:hover {
-    color: blue;
-  }
-  #ref-insta:hover {
-    color: rgb(197, 78, 128);
-  }
-}
-/* Large devices (laptops/desktops, 992px and up) */
-@media (max-width: 1024px) {
-  .footer {
-    width: 100%;
-    height: 100px;
-    background: #2f3640;
-    color: #616161;
-  }
-  .footer__social {
-    text-align: center;
-  }
-  .footer__social__links i {
-    font-size: 2.5rem;
-  }
-  .footer__social__links a{
-    font-size: 1.5rem;
-    margin: 0 1%;
-    color: #616161;    
-    text-decoration: none;
-  }
-  #ref-face:hover {
-    color: blue;
-  }
-  #ref-insta:hover {
-    color: rgb(197, 78, 128);
-  }
-}
-@media (min-width: 1025px) {
-  .footer {
-    width: 100%;
-    height: 100px;
-    background: #2f3640;
-    color: #616161;
-  }
-  .footer__social {
-    text-align: center;
-  }
-  .footer__social__links i {
-    font-size: 2.5rem;
-  }
-  .footer__social__links a{
-    font-size: 1.5rem;
-    margin: 0 1%;
-    color: #616161;    
-    text-decoration: none;
-  }
-  #ref-face:hover {
-    color: blue;
-  }
-  #ref-insta:hover {
-    color: rgb(197, 78, 128);
-  }
-}

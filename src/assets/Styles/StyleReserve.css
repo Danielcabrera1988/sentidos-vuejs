@@ -1,12 +1,16 @@
+/* View Movile */
 .reserva__container {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  color: white;
-  
+  color: white;  
+}
+.reserva__container__img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: left;
 }
 .reserva__img{
   width: 100%;
@@ -17,18 +21,18 @@
 }
 .reserva__img__logo{
   width: 50%;
-  max-width: 250px;
+  max-width: 200px;
 }
 .reserva__selection{
   position: absolute;
   width: 95%;
   max-width: 300px;
-  top: 20%;
+  top: 23%;
   align-items: center;
   text-align: center;
 }
 .reserva__selection h2{
-  font-family: 'Bluetea', sans-serif;
+  font-family: 'Bluetea';
   font-weight: 100;
   margin: 2% auto;
 }
@@ -39,7 +43,7 @@
   flex-direction: column;
   text-align: center;
   position: absolute;
-  top: 50%;
+  top: 60%;
 }
 .reserva__form h2{
   font-family: 'Bluetea', sans-serif;
@@ -57,4 +61,4 @@ button:hover {
 .mensajeError {
   color: rgb(230, 0, 0);
 }
-
+@import "@/assets/common/FontBluetea.css";
