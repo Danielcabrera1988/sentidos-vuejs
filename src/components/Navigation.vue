@@ -8,6 +8,9 @@
       <!-- NavBar -->
       <ul>
         <li>
+          <router-link to="/api">Api</router-link>
+        </li>
+        <li>
           <router-link to="/">Home</router-link>
         </li>
         <li>

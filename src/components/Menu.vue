@@ -28,28 +28,39 @@
           sm="6"
           md="4"
           lg="3"
-          v-for="(comida, i) in comidas"
+          v-for="(producto, i) in productos"
           :key="i"
         >
           <v-card class="cards__conteiners">
-            <v-img :src="require(`@/assets/Img/${comida.imagen}`)"></v-img>
+            <v-img :src="`http://localhost:8000${producto.img}`" />
 
-            <v-card-title class="card__name">{{ comida.nombre }}</v-card-title>
+            <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
             <v-card-subtitle class="card__price">
-              {{ comida.price }}
+              {{ producto.price }}
             </v-card-subtitle>
 
             <v-card-actions>
-              <v-btn style="font-size: 10px; margin-left: 15px"  :icon="comida.show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="changeShow(comida)" color="orange lighten-2" text> Leer más... </v-btn>
+              <v-btn
+                style="font-size: 10px; margin-left: 15px"
+                :icon="producto.state ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="changeShow(producto)"
+                color="orange lighten-2"
+                text
+              >
+                Leer más...
+              </v-btn>
               <v-spacer></v-spacer>
-              <v-btn :icon="comida.show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="changeShow(comida)"></v-btn>
+              <v-btn
+                :icon="producto.state ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                @click="changeShow(producto)"
+              ></v-btn>
             </v-card-actions>
             <v-expand-transition>
-              <div v-show="comida.show">
+              <div v-show="producto.state">
                 <v-divider></v-divider>
                 <v-card-text class="card__description">
-                  {{ comida.description }}
+                  {{ producto.detail_food }}
                 </v-card-text>
               </div>
             </v-expand-transition>
@@ -62,78 +73,28 @@
 
 <script>
 import { defineComponent, ref } from "vue";
+import { getAPI } from "../Ax-Api";
 export default defineComponent({
   setup() {
-    /* Variables Reactivas */
-
+    const productos = ref([]);
     const changeShow = (item) => {
-      item.show = !item.show;
+      item.state = !item.state;
     };
-    const comidas = ref([
-      {
-        nombre: "Cangreburguer",
-        description: "descripcion",
-        price: "$150 pesitos",
-        imagen: "menu1.jpg",
-        show: false,
-      },
-      {
-        nombre: "Sushilanga",
-        description: "descripcion",
-        price: "$350 pesitos",
-        imagen: "menu2.jpg",
-        show: false,
-      },
-      {
-        nombre: "Brichesirijillo",
-        description: "descripcion",
-        price: "$200 pesitos",
-        imagen: "menu3.jpg",
-        show: false,
-      },
-      {
-        nombre: "Pizzita",
-        description: "descripcion",
-        price: "$300 pesitos",
-        imagen: "menu4.jpg",
-        show: false,
-      },
-      {
-        nombre: "Ensaladita",
-        description: "descripcion",
-        price: "$250 pesitos",
-        imagen: "menu5.jpg",
-        show: false,
-      },
-      {
-        nombre: "Volcancirri",
-        description: "descripcion",
-        price: "$180 pesitos",
-        imagen: "menu6.jpg",
-        show: false,
-      },
-      {
-        nombre: "Pimientirijillo",
-        description: "descripcion",
-        price: "$220 pesitos",
-        imagen: "menu7.jpg",
-        show: false,
-      },
-      {
-        nombre: "Bastoncirri",
-        description: "descripcion",
-        price: "$310 pesitos",
-        imagen: "menu8.jpg",
-        show: false,
-      },
-    ]);
+    const fetchProductos = async () => {
+      const { data } = await getAPI.get("/applications/food/");
+      productos.value = data;
+    };
+
+    fetchProductos();
     return {
-      comidas,
+      productos,
       changeShow,
     };
   },
 });
 </script>
+
+
 <style scoped>
 @import "../assets/Styles/StyleMenu.css";
 </style>

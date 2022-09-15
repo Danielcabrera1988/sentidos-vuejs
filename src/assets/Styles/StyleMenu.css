@@ -50,10 +50,10 @@
   flex-direction: column;
   font-size: 12px;
 }
-.menu__title{
+.menu__title {
   font-size: 22px;
 }
-.menu__description{
+.menu__description {
   font-size: 14px;
   font-weight: 500;
 }
@@ -135,10 +135,10 @@
     flex-direction: column;
     font-size: 12px;
   }
-  .menu__title{
+  .menu__title {
     font-size: 24px;
   }
-  .menu__description{
+  .menu__description {
     font-size: 16px;
     font-weight: 500;
   }
@@ -169,7 +169,6 @@
 @media (min-width: 1024px) {
   .menu__container {
     width: 100%;
-    margin: 1% auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,10 +217,10 @@
     display: flex;
     flex-direction: column;
   }
-  .menu__title{
+  .menu__title {
     font-size: 24px;
   }
-  .menu__description{
+  .menu__description {
     font-size: 16px;
     font-weight: 500;
   }

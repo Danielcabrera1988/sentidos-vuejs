@@ -21,6 +21,7 @@
     "roboto-fontface": "*",
     "scrollreveal": "^4.0.9",
     "vue": "^3.2.13",
+    "vue-axios": "^3.4.1",
     "vue-router": "^4.0.3",
     "vuelidate": "^0.7.7",
     "vuetify": "^3.0.0-beta.0",
