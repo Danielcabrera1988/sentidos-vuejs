@@ -53,7 +53,6 @@ CORS_ORIGIN_WHITELIST = (
     #Vue local
     'http://localhost:8080',
     'http://127.0.0.1:8080',
-    'https://sentidos-vuejs.vercel.app/',
     #React local
     'http://localhost:3000',
     'http://127.0.0.1:3000',
@@ -138,9 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+
 
 MEDIA_URL = '/media/'
 
