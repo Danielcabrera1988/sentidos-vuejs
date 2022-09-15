@@ -25,12 +25,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Third apps:
     'rest_framework',
-    'rest_framework.authtoken',
+    'knox',
     'corsheaders',
     #MY APPS:
     'applications.food',
-
+    'applications.user',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +54,6 @@ CORS_ORIGIN_WHITELIST = (
     #Vue local
     'http://localhost:8080',
     'http://127.0.0.1:8080',
-    'https://sentidos-vuejs.vercel.app/',
     #React local
     'http://localhost:3000',
     'http://127.0.0.1:3000',
@@ -64,8 +64,7 @@ CORS_ALLOW_HEADERS = list(default_headers)+[
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
     ]
 }
 
