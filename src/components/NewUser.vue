@@ -50,6 +50,9 @@
 import { ref } from "vue";
 export default {
   setup() {
+    const submit = () =>{
+      console.log
+    }
     const form = ref(null);
     const formUser = ref({
       name: "",
@@ -99,6 +102,7 @@ export default {
       confirmPasswordRules,
       maxName,
       minCaracter,
+      submit
     };
   },
 };
