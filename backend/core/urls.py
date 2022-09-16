@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('applications/', include('applications.food.urls')),
-    path('applications/', include('applications.user.api.urls')),
+    path('', include('applications.user.api.urls')),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

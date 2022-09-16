@@ -1,20 +1,11 @@
 from pathlib import Path
 from corsheaders.defaults import default_headers
-import environ 
+
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
-
-environ.Env.read_env()
-
-DEBUG= env('DEBUG')
-SECRET_KEY= env('SECRET_KEY')
-
-
-ALLOWED_HOSTS = []
-
+SECRET_KEY='django-insecure-ufn*0b6@7b@=e@30ie*#&2hkk=quci+wkk0)oet-5#20@_b7(='
 
 # Application definition
 
@@ -64,6 +55,8 @@ CORS_ALLOW_HEADERS = list(default_headers)+[
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication',
     ]
 }
@@ -87,17 +80,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.restaurant',
-    }
-}
 
 
 # Password validation
@@ -139,6 +121,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
