@@ -15,11 +15,7 @@
         4P por mesas maximo
         <v-text-field type="number" variant="outlined" v-model="reservaUser.mesa"></v-text-field>
       </p>
-    </div>
-    <div class="reserva__selection__mesa">
-      <!-- algo para sellecionar la mesa y que quede seleccionado o referencia a un numero de mesa para posteriormente guardar en elll formulario de reserva -->
-      
-    </div>
+    </div>    
     <div class="reserva__form">
       <h2>Datos de Reserva</h2>
       <v-form ref="form">
@@ -47,6 +43,9 @@
 
         <button type="submit">Enviar</button>
       </v-form>
+    </div>
+    <div class="reserva__selection__mesa" v-for="number in 20" v-bind:key="number">
+      <v-btn class="selection__table" style="color: black">{{number}}</v-btn>      
     </div>
   </div>
 </template>
