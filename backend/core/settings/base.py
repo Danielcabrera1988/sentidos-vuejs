@@ -3,7 +3,7 @@ from corsheaders.defaults import default_headers
 
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY='django-insecure-ufn*0b6@7b@=e@30ie*#&2hkk=quci+wkk0)oet-5#20@_b7(='
 
