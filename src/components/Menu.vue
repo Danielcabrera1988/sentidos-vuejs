@@ -81,7 +81,7 @@ export default defineComponent({
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("/applications/food/");
+      const { data } = await getAPI.get("/food/");
       productos.value = data;
     };
 
