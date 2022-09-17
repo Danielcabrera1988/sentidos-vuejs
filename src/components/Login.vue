@@ -2,15 +2,14 @@
   <div class="login__container">
     <h1 class="animate__animated animate__zoomIn">Sentidos</h1>
     <h3 class="animate__animated animate__zoomIn">Restaurante y casa de te</h3>
-    <img class="login__container__img" :src="require('../assets/Img/fondoLogin.jpg')"/>
     <div class="login__form">
-      <v-form ref="form">
+      <v-form ref="form" v-on:submit.prevent="login">
         <v-text-field
           class="form__input"
-          prepend-icon="mdi-email-outline"
-          v-model="formUser.email"
-          :rules="emailRules"
-          label="Email"
+          prepend-icon="mdi-account-outline"
+          v-model="formUser.user"
+          :rules="userRules"
+          label="Usuario"
         ></v-text-field>
 
         <v-text-field
@@ -30,28 +29,38 @@
 
 <script>
 import { ref } from "vue";
-
+import {getAPI} from "../Ax-Api";
 export default {
   setup() {
     const form = ref(null);
     const formUser = ref({
-      email: "",
+      user: "",
       password: "",
     });
-    const emailRules = [
-      (value) => !!value || "E-mail es requerido",
-      (value) => /.+@.+/.test(value) || "E-mail debe ser válido",
-    ];
+    const userRules = [(value) => !!value || "User es requerido"];
     const passwordlRules = [(value) => !!value || "Contraseña es requerida"];
     return {
       form,
       formUser,
-      emailRules,
+      userRules,
       passwordlRules,
     };
+  },
+  methods: {
+    login() {
+      const dataUser = {
+        "username": this.formUser.user,
+        "password": this.formUser.password,
+      };
+      getAPI.post("/api/login/", dataUser).then((data) => {
+        if(data.status === 200){
+          //
+        }
+      });
+    },
   },
 };
 </script>
 <style scoped>
-@import "@/assets/Styles/StyleLogin.css";                
+@import "@/assets/Styles/StyleLogin.css";
 </style>

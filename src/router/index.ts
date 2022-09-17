@@ -36,11 +36,6 @@ const routes: Array<RouteRecordRaw> = [
     name: "login",
     component: () => import("../views/LoginView.vue"),
   },
-  {
-    path: "/api",
-    name: "api",
-    component: () => import("../views/TestApi.vue"),
-  },
 ];
 
 const router = createRouter({

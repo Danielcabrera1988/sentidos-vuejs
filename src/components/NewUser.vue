@@ -1,7 +1,6 @@
 <template>
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
-    <img class="user__container__img" :src="require('../assets/Img/fondoregistro.jpg')" alt="" />
     <div class="user__container__form">
       <v-form ref="form" @submit.prevent="submit">
         <v-text-field
@@ -39,7 +38,7 @@
         >
         </v-text-field>
 
-        <button class="form__btn" type="submit">Enviar</button>
+        <button class="form__btn">Enviar</button>
       </v-form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
@@ -50,6 +49,9 @@
 import { ref } from "vue";
 export default {
   setup() {
+    const submit = () =>{
+      console.log
+    }
     const form = ref(null);
     const formUser = ref({
       name: "",
@@ -67,7 +69,7 @@ export default {
 
     const emailRules = [
       (value) => !!value || "E-mail es requerido",
-      (value) => /.+@.+/.test(value) || "E-mail debe ser válido",
+      (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "E-mail debe ser válido",
     ];
 
     const passwordlRules = [
@@ -99,6 +101,7 @@ export default {
       confirmPasswordRules,
       maxName,
       minCaracter,
+      submit
     };
   },
 };
