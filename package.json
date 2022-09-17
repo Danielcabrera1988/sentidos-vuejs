@@ -18,6 +18,7 @@
     "animate.css": "^4.1.1",
     "awesome-vue-star-rating": "^1.0.9",
     "core-js": "^3.8.3",
+    "moment": "^2.29.4",
     "roboto-fontface": "*",
     "scrollreveal": "^4.0.9",
     "vue": "^3.2.13",
