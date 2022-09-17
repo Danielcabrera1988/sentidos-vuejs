@@ -38,7 +38,7 @@
         >
         </v-text-field>
 
-        <button class="form__btn" type="submit">Enviar</button>
+        <button class="form__btn">Enviar</button>
       </v-form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
