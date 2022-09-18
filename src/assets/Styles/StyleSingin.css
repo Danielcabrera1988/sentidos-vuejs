@@ -1,59 +1,39 @@
 .user__container {
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .user__container h1 {
   font-family: "Bluetea";
-  top: 5%;
   font-weight: 100;
-  position: absolute;
-}
-.user__container__img {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
 }
 .user__container__form {
   width: 90%;
-  max-width: 500px;
-  position: absolute;
+  max-width: 450px;
+  height: 550px;
   display: flex;
   flex-direction: column;
-  border: 3px solid white;
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 10px;
-  top: 15%;
-  padding: 3% 3%;
+  box-shadow: 5px 5px 5px black;
+  padding: 15px;
   justify-content: center;
+  margin-top: 10px;
 }
 .user__container h3 {
   font-family: "Bluetea";
-  top: 80%;
   font-weight: 100;
-  position: absolute;
-}
-button {
-  height: 30px;
-  width: 50px;
-  margin-left: 40px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  font-weight: 600;
+  margin-top: 20px;
 }
 .form__btn {
-  margin: 5% auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-weight: 500;
-}
-button:hover {
-  color: blue;
-}
-input {
-  margin: 10px;
 }
 .mensajeError {
   color: rgb(230, 0, 0);

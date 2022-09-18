@@ -22,9 +22,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/BlogView.vue"),
   },
   {
-    path: "/newUser",
-    name: "newUser",
-    component: () => import("../views/NewUserView.vue"),
+    path: "/singin",
+    name: "singin",
+    component: () => import("../views/SinginView.vue"),
   },
   {
     path: "/calification",
@@ -35,11 +35,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "login",
     component: () => import("../views/LoginView.vue"),
-  },
-  {
-    path: "/api",
-    name: "api",
-    component: () => import("../views/TestApi.vue"),
   },
 ];
 

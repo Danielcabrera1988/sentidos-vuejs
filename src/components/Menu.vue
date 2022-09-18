@@ -6,21 +6,18 @@
         :src="require('../assets/Img/banner-menu.jpg')"
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
-      <h2 class="header__title">Download Menu</h2>
+      <h2 class="header__title">Download The Menu</h2>
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
         platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Voluptatum rem asperiores quod molestias amet
-        molestiae deserunt magni illum, eum alias ratione est veniam esse atque
-        sapiente quos vitae eius ad quibusdam neque."
+        personal altamente capacitado."
       </p>
     </div>
     <div class="menu__cards">
       <h3 class="menu__title">¡Algunas de nuestas delicias! 😋</h3>
       <p class="menu__description">
         Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
-        completo desde el QR y a disfrutar de una lluvia de esquisitos sabores.
+        completo desde el QR y a disfrutar de una lluvia de exquisitos sabores.
       </p>
       <v-row>
         <v-col
@@ -28,11 +25,11 @@
           sm="6"
           md="4"
           lg="3"
-          v-for="(producto, i) in productos"
-          :key="i"
+          v-for="producto in productos"
+          :key="producto.id"
         >
           <v-card class="cards__conteiners">
-            <v-img :src="`http://localhost:8000${producto.img}`" />
+            <v-img :src="`${path}${producto.img}`"></v-img>
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
@@ -76,12 +73,13 @@ import { defineComponent, ref } from "vue";
 import { getAPI } from "../Ax-Api";
 export default defineComponent({
   setup() {
+    const path = "https://alexlopez.pythonanywhere.com/";
     const productos = ref([]);
     const changeShow = (item) => {
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("/applications/food/");
+      const { data } = await getAPI.get("/food/");
       productos.value = data;
     };
 
@@ -89,11 +87,11 @@ export default defineComponent({
     return {
       productos,
       changeShow,
+      path,
     };
   },
 });
 </script>
-
 
 <style scoped>
 @import "../assets/Styles/StyleMenu.css";

@@ -1,15 +1,20 @@
 <template>
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
-    <img class="user__container__img" :src="require('../assets/Img/fondoregistro.jpg')" alt="" />
     <div class="user__container__form">
-      <v-form ref="form" @submit.prevent="submit">
+      <v-form ref="form" @submit.prevent="login">
         <v-text-field
           v-model="formUser.name"
           prepend-icon="mdi-account"
           :counter="maxName"
           :rules="nameRules"
           label="Nombre y Apellido"
+        ></v-text-field>
+
+         <v-text-field
+          v-model="formUser.username"
+          prepend-icon="mdi-account"
+          label="User name"
         ></v-text-field>
 
         <v-text-field
@@ -39,7 +44,7 @@
         >
         </v-text-field>
 
-        <button class="form__btn" type="submit">Enviar</button>
+        <button class="form__btn">Enviar</button>
       </v-form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
@@ -48,11 +53,14 @@
 
 <script >
 import { ref } from "vue";
+import {getAPI} from "../Ax-Api";
 export default {
   setup() {
+
     const form = ref(null);
     const formUser = ref({
       name: "",
+      username: "",
       email: "",
       password: "",
       password2: "",
@@ -64,12 +72,10 @@ export default {
       (value) => !!value || "Nombre es requerido",
       (value) => value.length <= 10 || "Nombre debe tener maximo 10 caracteres",
     ];
-
     const emailRules = [
       (value) => !!value || "E-mail es requerido",
-      (value) => /.+@.+/.test(value) || "E-mail debe ser válido",
+      (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "E-mail debe ser válido",
     ];
-
     const passwordlRules = [
       (value) => !!value || "Contraseña es requerida",
       (value) =>
@@ -78,7 +84,6 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
-
     const confirmPasswordRules = [
       (value) => !!value || "Contraseña es requerida",
       (value) =>
@@ -89,7 +94,6 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
-
     return {
       form,
       formUser,
@@ -101,8 +105,25 @@ export default {
       minCaracter,
     };
   },
+  methods: {
+    login() {
+      const dataUser = {
+        "username": this.formUser.username,
+        "email": this.formUser.email,
+        "password": this.formUser.password,
+        "last_name": this.formUser.name,
+      };
+      getAPI.post("api/register/", dataUser).then((data) => {
+        if(data.status === 200){
+          console.log("datos ok => ", data)
+        }
+      }).catch((error) => {
+        console.log(error)
+      });
+    },
+  },
 };
 </script>
 <style scoped>
-@import "../assets/Styles/StyleNewUser.css";
+@import "../assets/Styles/StyleSingin.css";
 </style>

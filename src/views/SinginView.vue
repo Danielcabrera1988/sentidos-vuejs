@@ -1,14 +1,14 @@
 <template>
   <div>
-    <NewUser />
+    <Singin />
   </div>
 </template>
 
 <script>
-import NewUser from "../components/NewUser.vue";
+import Singin from "../components/Singin.vue";
 import { defineComponent  } from "vue";
 export default defineComponent({
-  components: { NewUser },
+  components: { Singin },
   setup() {
     //
   },

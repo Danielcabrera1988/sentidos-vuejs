@@ -3,9 +3,6 @@
   font-family: var(--font-monse);
 }
 
-
-@import url("http://fonts.cdnfonts.com/css/montserrat");
-
 :root{
   --font-monse: "Montserrat", sans-serif;
   --main-bg-color: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);;
