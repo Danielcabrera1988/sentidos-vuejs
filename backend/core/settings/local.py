@@ -1,6 +1,6 @@
 from .base import *
 import os
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'AlexLopez.pythonanywhere.com']
 
