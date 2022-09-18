@@ -46,12 +46,13 @@
 /* menu__cards */
 .menu__cards {
   /* H3+P+CARDS*/
-  width: 95%;
+  width: 100%;
   height: 100%;
   margin: 1% auto;
   display: flex;
   flex-direction: column;
   text-align: justify;
+  align-items: center;
   font-size: 12px;
 }
 
