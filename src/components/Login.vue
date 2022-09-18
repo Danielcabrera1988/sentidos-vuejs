@@ -54,7 +54,7 @@ export default {
       };
       getAPI.post("/api/login/", dataUser).then((data) => {
         if(data.status === 200){
-          //
+          console.log(data)
         }
       });
     },

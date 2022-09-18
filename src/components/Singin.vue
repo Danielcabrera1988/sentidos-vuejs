@@ -11,6 +11,12 @@
           label="Nombre y Apellido"
         ></v-text-field>
 
+         <v-text-field
+          v-model="formUser.username"
+          prepend-icon="mdi-account"
+          label="User name"
+        ></v-text-field>
+
         <v-text-field
           v-model="formUser.email"
           prepend-icon="mdi-email-outline"
@@ -47,14 +53,14 @@
 
 <script >
 import { ref } from "vue";
+import {getAPI} from "../Ax-Api";
 export default {
   setup() {
-    const submit = () =>{
-      console.log
-    }
+
     const form = ref(null);
     const formUser = ref({
       name: "",
+      username: "",
       email: "",
       password: "",
       password2: "",
@@ -66,12 +72,10 @@ export default {
       (value) => !!value || "Nombre es requerido",
       (value) => value.length <= 10 || "Nombre debe tener maximo 10 caracteres",
     ];
-
     const emailRules = [
       (value) => !!value || "E-mail es requerido",
       (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "E-mail debe ser válido",
     ];
-
     const passwordlRules = [
       (value) => !!value || "Contraseña es requerida",
       (value) =>
@@ -80,7 +84,6 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
-
     const confirmPasswordRules = [
       (value) => !!value || "Contraseña es requerida",
       (value) =>
@@ -91,7 +94,6 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
-
     return {
       form,
       formUser,
@@ -101,11 +103,24 @@ export default {
       confirmPasswordRules,
       maxName,
       minCaracter,
-      submit
     };
+  },
+  methods: {
+    login() {
+      const dataUser = {
+        "username": this.formUser.username,
+        "password": this.formUser.password,
+        "email": this.email,
+      };
+      getAPI.post("/api/register/", dataUser).then((data) => {
+        if(data.status === 200){
+          console.log(data)
+        }
+      });
+    },
   },
 };
 </script>
 <style scoped>
-@import "../assets/Styles/StyleNewUser.css";
+@import "../assets/Styles/StyleSingin.css";
 </style>

@@ -23,7 +23,7 @@
           <router-link to="/login">Login</router-link>
         </li>
         <li>
-          <router-link to="/newUser">Sing in</router-link>
+          <router-link to="/singin">Sing in</router-link>
         </li>
       </ul>
     </div>

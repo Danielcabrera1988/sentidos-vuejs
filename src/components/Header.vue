@@ -25,18 +25,10 @@
         <div class="home__about">
           <h2>Seccion Nosotros</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, in
-            repudiandae eligendi accusamus nobis mollitia ipsam sunt error ipsum
-            praesentium non consequuntur aliquam voluptatibus soluta, quas
-            deleniti, esse excepturi. Eligendi, numquam delectus. Alias nihil
-            vero nemo ea fugiat culpa molestias, deleniti, earum nam laboriosam
-            maiores autem esse tenetur harum ratione consectetur molestiae
-            aliquid iste animi voluptatum aut rerum. Nihil odio dolore error ex,
-            alias nam consequatur laboriosam magnam! Veritatis et eos provident
-            optio praesentium dolores, magni alias illo delectus magnam, culpa
-            quisquam natus voluptatem necessitatibus qui expedita? Maxime
-            temporibus eligendi quia neque facere modi atque, aliquid nihil iure
-            porro deleniti.
+            Somos uno de los mejores restaurantes a nivel nacional, con elavoracion propia de todo nuestro menu.
+            Todos nuestros ingredientes son cuidadosamente seleccionados para brindarte la mejor experiencia de sabores.
+            Somos apacionados de la cocina y nos encanta preparar comidas de todo tipo.
+            Este arte culinario empezo hace 10 años en el rubro, por lo que conocemos a la perfección el gusto de nuestros clientes.
           </p>
         </div>
       </div>

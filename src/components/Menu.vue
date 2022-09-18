@@ -6,21 +6,18 @@
         :src="require('../assets/Img/banner-menu.jpg')"
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
-      <h2 class="header__title">Download Menu</h2>
+      <h2 class="header__title">Download The Menu</h2>
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
         platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Voluptatum rem asperiores quod molestias amet
-        molestiae deserunt magni illum, eum alias ratione est veniam esse atque
-        sapiente quos vitae eius ad quibusdam neque."
+        personal altamente capacitado."
       </p>
     </div>
     <div class="menu__cards">
       <h3 class="menu__title">¡Algunas de nuestas delicias! 😋</h3>
       <p class="menu__description">
         Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
-        completo desde el QR y a disfrutar de una lluvia de esquisitos sabores.
+        completo desde el QR y a disfrutar de una lluvia de exquisitos sabores.
       </p>
       <v-row>
         <v-col
@@ -32,7 +29,13 @@
           :key="i"
         >
           <v-card class="cards__conteiners">
+<<<<<<< HEAD
             <v-img :src="`http://alexlopez.pythonanywhere.com/${producto.img}`" />
+=======
+            <v-img
+              :src="`https://alexlopez.pythonanywhere.com/${producto.img}`"
+            ></v-img>
+>>>>>>> dani
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
@@ -81,7 +84,11 @@ export default defineComponent({
       item.state = !item.state;
     };
     const fetchProductos = async () => {
+<<<<<<< HEAD
       const { data } = await getAPI.get("/food/");
+=======
+      const { data } = await getAPI.get("food/");
+>>>>>>> dani
       productos.value = data;
     };
 
@@ -93,7 +100,6 @@ export default defineComponent({
   },
 });
 </script>
-
 
 <style scoped>
 @import "../assets/Styles/StyleMenu.css";
