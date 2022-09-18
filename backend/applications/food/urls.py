@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import FoodList, FoodDetailView, ShowImageField
+
 app_name = 'food'
 
 urlpatterns = [
