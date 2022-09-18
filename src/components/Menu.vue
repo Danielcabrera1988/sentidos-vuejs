@@ -25,8 +25,8 @@
           sm="6"
           md="4"
           lg="3"
-          v-for="(producto, i) in productos"
-          :key="i"
+          v-for="producto in productos"
+          :key="producto.id"
         >
           <v-card class="cards__conteiners">
             <v-img :src="`${path}${producto.img}`"></v-img>
