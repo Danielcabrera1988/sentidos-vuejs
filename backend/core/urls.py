@@ -10,6 +10,4 @@ urlpatterns = [
     path('', HomeRest.as_view(), name="homeRest"),
     path('', include('applications.food.urls')),
     path('', include('applications.user.api.urls')),
-]
-urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
