@@ -30,7 +30,7 @@
         >
           <v-card class="cards__conteiners">
             <v-img
-              :src="`https://alexlopez.pythonanywhere.com/${producto.img}`"
+              :src="`${path}${producto.img}`"
             ></v-img>
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
@@ -75,6 +75,7 @@ import { defineComponent, ref } from "vue";
 import { getAPI } from "../Ax-Api";
 export default defineComponent({
   setup() {
+    const path = "https://alexlopez.pythonanywhere.com/"
     const productos = ref([]);
     const changeShow = (item) => {
       item.state = !item.state;
@@ -88,6 +89,7 @@ export default defineComponent({
     return {
       productos,
       changeShow,
+      path
     };
   },
 });
