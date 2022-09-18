@@ -2,7 +2,7 @@
 import os
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'AlexLopez.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 DATABASES = {
     'default': {

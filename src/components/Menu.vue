@@ -32,7 +32,7 @@
           :key="i"
         >
           <v-card class="cards__conteiners">
-            <v-img :src="`http://localhost:8000${producto.img}`" />
+            <v-img :src="`http://alexlopez.pythonanywhere.com/${producto.img}`" />
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
@@ -81,7 +81,7 @@ export default defineComponent({
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("/applications/food/");
+      const { data } = await getAPI.get("/food/");
       productos.value = data;
     };
 
