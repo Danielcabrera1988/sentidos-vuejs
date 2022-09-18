@@ -32,7 +32,7 @@
           :key="i"
         >
           <v-card class="cards__conteiners">
-            <v-img :src="'https://alexlopez.pythonanywhere.com{{producto.img}}'" />
+            <v-img :src="`http://alexlopez.pythonanywhere.com/${producto.img}`" />
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
