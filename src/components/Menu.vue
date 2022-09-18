@@ -6,7 +6,7 @@
         :src="require('../assets/Img/banner-menu.jpg')"
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
-      <h2 class="header__title">Download Menu</h2>
+      <h2 class="header__title">Download The Menu</h2>
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
         platos son elavorados con los mal altos estandares de cocina y por
@@ -29,7 +29,9 @@
           :key="i"
         >
           <v-card class="cards__conteiners">
-            <v-img :src="`/media/food/Pizza${producto.img}`"></v-img>
+            <v-img
+              :src="`https://alexlopez.pythonanywhere.com/${producto.img}`"
+            ></v-img>
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
