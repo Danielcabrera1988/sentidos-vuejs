@@ -2,7 +2,7 @@
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
     <div class="user__container__form">
-      <v-form ref="form" @submit.prevent="submit">
+      <v-form ref="form" @submit.prevent="login">
         <v-text-field
           v-model="formUser.name"
           prepend-icon="mdi-account"
@@ -109,13 +109,16 @@ export default {
     login() {
       const dataUser = {
         "username": this.formUser.username,
+        "email": this.formUser.email,
         "password": this.formUser.password,
-        "email": this.email,
+        "last_name": this.formUser.name,
       };
-      getAPI.post("/api/register/", dataUser).then((data) => {
+      getAPI.post("api/register/", dataUser).then((data) => {
         if(data.status === 200){
-          console.log(data)
+          console.log("datos ok => ", data)
         }
+      }).catch((error) => {
+        console.log(error)
       });
     },
   },
