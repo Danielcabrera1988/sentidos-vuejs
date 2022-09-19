@@ -55,6 +55,7 @@
 
 .menu__title {
   font-size: 22px;
+  text-align: center;
 }
 .menu__description {
   font-size: 14px;
@@ -128,7 +129,7 @@
   /* menu__cards */
   .menu__cards {
     width: 95%;
-    margin: 1% auto;
+    margin: 10px auto;
     text-align: justify;
     justify-content: center;
     display: flex;
@@ -136,11 +137,13 @@
     font-size: 12px;
   }
   .menu__title {
+    text-align: center;
     font-size: 24px;
   }
   .menu__description {
     font-size: 16px;
     font-weight: 500;
+    margin: 10px auto;
   }
   .cards__conteiners {
     width: 100%;
@@ -219,6 +222,7 @@
     flex-direction: column;
   }
   .menu__title {
+    text-align: center;
     font-size: 24px;
   }
   .menu__description {
