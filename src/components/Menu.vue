@@ -10,7 +10,11 @@
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
         platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado."
+        personal altamente capacitado. Una progresión de ingredientes raros y
+        hermosos donde la textura, el sabor y la armonía son primordiales.
+        Sumérjase en la experiencia gastronómica de Quay con el menú de Peter
+        Gilmore y la lista de vinos cuidadosamente seleccionada por la directora
+        de Fink Wine, Amanda Yallop.
       </p>
     </div>
     <div class="menu__cards">

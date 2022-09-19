@@ -4,11 +4,11 @@
       <div class="home__container__box">
         <img :src="require('../assets/Img/LogoSentidos2.png')" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem, omnis necessitatibus beatae numquam enim, dolore
-          tempore quas blanditiis, fuga ratione culpa tempora cumque! Expedita
-          in incidunt eaque? Qui, consequatur sit!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, quisquam inventore quos quia pariatur at dicta est doloribus laborum fugiat.
+          "Las recetas no son fórmulas matemáticas, sino que, como los
+          sentimientos, varían en cada persona. Las recetas no son de quien las
+          cuenta, sino de quien las hace, porque cada cual pone su sello
+          personal e intransferible. Si una receta fuese una fórmula exacta,
+          todo sabría de la misma forma y, afortunadamente, esto no es así."
         </p>
       </div>
       <div class="home__body">
@@ -25,10 +25,13 @@
         <div class="home__about">
           <h2>Seccion Nosotros</h2>
           <p>
-            Somos uno de los mejores restaurantes a nivel nacional, con elavoracion propia de todo nuestro menu.
-            Todos nuestros ingredientes son cuidadosamente seleccionados para brindarte la mejor experiencia de sabores.
-            Somos apacionados de la cocina y nos encanta preparar comidas de todo tipo.
-            Este arte culinario empezo hace 10 años en el rubro, por lo que conocemos a la perfección el gusto de nuestros clientes.
+            Somos uno de los mejores restaurantes a nivel nacional, con
+            elavoracion propia de todo nuestro menu. Todos nuestros ingredientes
+            son cuidadosamente seleccionados para brindarte la mejor experiencia
+            de sabores. Somos apacionados de la cocina y nos encanta preparar
+            comidas de todo tipo. Este arte culinario empezo hace 10 años en el
+            rubro, por lo que conocemos a la perfección el gusto de nuestros
+            clientes.
           </p>
         </div>
       </div>
