@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
 const getAPI = axios.create({
-    baseURL: 'https://alexlopez.pythonanywhere.com/'
-})
+  baseURL: "https://alexlopez.pythonanywhere.com",
+});
 
-export { getAPI }
+export { getAPI };
