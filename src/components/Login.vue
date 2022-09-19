@@ -24,43 +24,89 @@
         <button class="form__btn" type="submit">Login</button>
       </v-form>
     </div>
+    <div class="text-center">
+      <v-dialog v-model="dialog">
+        <v-card>
+          <v-card-text>
+            {{message}}
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" block @click="cerrar"
+              >Cerrar</v-btn
+            >
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import {getAPI} from "../Ax-Api";
+import {useRouter} from 'vue-router';
+import {useStore} from 'vuex';
+import { getAPI } from "../Ax-Api";
+
 export default {
   setup() {
+    const router = useRouter()
+    const store = useStore()
+    const logged = ref(false)
+    const dialog = ref(false);
     const form = ref(null);
     const formUser = ref({
       user: "",
       password: "",
     });
-    const userRules = [(value) => !!value || "User es requerido"];
+
+    const message = ref('');
+    const userRules = [(value) => !!value || "Usuario es requerido"];
     const passwordlRules = [(value) => !!value || "Contraseña es requerida"];
+    
+
+    const cerrar = ()=>{
+      if (logged.value) {
+        router.push('/')
+      }
+      dialog.value =false
+
+    }
+
+    const login = ()=> {
+      const dataUser = {
+        username: formUser.value.user,
+        password: formUser.value.password,
+      }
+      try {
+        getAPI.post("/api/login/", dataUser).then((data) => {
+          if (data.status === 200) {
+            message.value='Usuario logeado'
+            dialog.value=true;
+            logged.value = true;
+            store.commit('SET_USUARIO',dataUser)
+            localStorage.setItem('usuario',JSON.stringify(dataUser.username))
+          }
+        })
+      } catch (error) {
+        dialog.value=true;
+         message.value='Ocurrio un error al ingresar, verifique usuario y contraseña'
+         
+      }
+    }
     return {
       form,
       formUser,
       userRules,
       passwordlRules,
-    };
-  },
-  methods: {
-    login() {
-      const dataUser = {
-        "username": this.formUser.user,
-        "password": this.formUser.password,
-      };
-      getAPI.post("/api/login/", dataUser).then((data) => {
-        if(data.status === 200){
-          console.log(data)
-        }
-      });
-    },
-  },
+      dialog,
+      message,
+      login,cerrar
+    }
+  }
 };
 </script>
 <style scoped>
 @import "@/assets/Styles/StyleLogin.css";
 </style>
+
+
