@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const getAPI = axios.create({
-    baseURL: 'https://binarysystem.pythonanywhere.com/'
+    baseURL: 'http://alexlopez.pythonanywhere.com'
 })
 
 export { getAPI }

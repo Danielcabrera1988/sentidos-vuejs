@@ -73,7 +73,7 @@ import { defineComponent, ref } from "vue";
 import { getAPI } from "../Ax-Api";
 export default defineComponent({
   setup() {
-    const path = "https://binarysystem.pythonanywhere.com/";
+    const path = "https://alexlopez.pythonanywhere.com/";
     const productos = ref([]);
     const changeShow = (item) => {
       item.state = !item.state;
