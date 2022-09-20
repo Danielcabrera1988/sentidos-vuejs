@@ -2,19 +2,28 @@
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
     <div class="user__container__form">
-      <v-form ref="form" @submit.prevent="login">
+      <v-form ref="form" @submit.prevent="singIn">
         <v-text-field
-          v-model="formUser.name"
+          v-model="formUser.firstName"
           prepend-icon="mdi-account"
           :counter="maxName"
-          :rules="nameRules"
-          label="Nombre y Apellido"
+          :rules="firstNameRules"
+          label="Nombre"
         ></v-text-field>
 
-         <v-text-field
+        <v-text-field
+          v-model="formUser.lastName"
+          prepend-icon="mdi-account"
+          :counter="maxName"
+          :rules="lastNameRules"
+          label="Apellido"
+        ></v-text-field>
+
+        <v-text-field
           v-model="formUser.username"
           prepend-icon="mdi-account"
-          label="User name"
+          :rules="userNameRules"
+          label="Usuario"
         ></v-text-field>
 
         <v-text-field
@@ -48,33 +57,80 @@
       </v-form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
+    <div class="text-center">
+      <v-dialog v-model="dialog">
+        <v-card>
+          <v-card-text>
+            {{ message }}
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" block @click="cerrar">Cerrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
   </div>
 </template>
 
-<script >
+<script>
 import { ref } from "vue";
-import {getAPI} from "../Ax-Api";
+import { getAPI } from "../Ax-Api";
 export default {
   setup() {
-
+    const dialog = ref(false);
+    const message = ref("");
     const form = ref(null);
     const formUser = ref({
-      name: "",
+      firstName: "",
+      lastName: "",
       username: "",
       email: "",
       password: "",
       password2: "",
     });
-    const maxName = ref(10);
+
+    const singIn = () => {
+      const dataUser = {
+        username: formUser.value.username,
+        email: formUser.value.email,
+        name: formUser.value.firstName,
+        lastName: formUser.value.lastName,
+        password: formUser.value.password,
+      };
+      getAPI
+        .post("api/register/", dataUser)
+        .then((data) => {
+          if (data.status === 200) {
+            message.value = "Usuario creado correctamente!";
+            dialog.value = true;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    singIn();
+
+    const maxName = ref(20);
     const minCaracter = ref(8);
 
-    const nameRules = [
+    const firstNameRules = [
       (value) => !!value || "Nombre es requerido",
-      (value) => value.length <= 10 || "Nombre debe tener maximo 10 caracteres",
+      (value) => value.length <= 20 || "Nombre debe tener maximo 10 caracteres",
+    ];
+    const lastNameRules = [
+      (value) => !!value || "Nombre es requerido",
+      (value) => value.length <= 20 || "Nombre debe tener maximo 10 caracteres",
+    ];
+    const userNameRules = [
+      (value) => !!value || "Nombre es requerido",
+      (value) => value.length <= 20 || "Nombre debe tener maximo 10 caracteres",
     ];
     const emailRules = [
       (value) => !!value || "E-mail es requerido",
-      (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "E-mail debe ser válido",
+      (value) =>
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+        "E-mail debe ser válido",
     ];
     const passwordlRules = [
       (value) => !!value || "Contraseña es requerida",
@@ -94,33 +150,19 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
+
     return {
       form,
       formUser,
-      nameRules,
+      firstNameRules,
+      lastNameRules,
+      userNameRules,
       emailRules,
       passwordlRules,
       confirmPasswordRules,
       maxName,
       minCaracter,
     };
-  },
-  methods: {
-    login() {
-      const dataUser = {
-        "username": this.formUser.username,
-        "email": this.formUser.email,
-        "password": this.formUser.password,
-        "last_name": this.formUser.name,
-      };
-      getAPI.post("api/register/", dataUser).then((data) => {
-        if(data.status === 200){
-          console.log("datos ok => ", data)
-        }
-      }).catch((error) => {
-        console.log(error)
-      });
-    },
   },
 };
 </script>

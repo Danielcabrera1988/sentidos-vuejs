@@ -28,12 +28,10 @@
       <v-dialog v-model="dialog">
         <v-card>
           <v-card-text>
-            {{message}}
+            {{ message }}
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" block @click="cerrar"
-              >Cerrar</v-btn
-            >
+            <v-btn color="primary" block @click="cerrar">Cerrar</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -43,15 +41,16 @@
 
 <script>
 import { ref } from "vue";
-import {useRouter} from 'vue-router';
-import {useStore} from 'vuex';
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 import { getAPI } from "../Ax-Api";
 
 export default {
   setup() {
-    const router = useRouter()
-    const store = useStore()
-    const logged = ref(false)
+    //en vue 3 se desarrolla todo desde dentro del setup
+    const router = useRouter();
+    const store = useStore();
+    const logged = ref(false);
     const dialog = ref(false);
     const form = ref(null);
     const formUser = ref({
@@ -59,40 +58,43 @@ export default {
       password: "",
     });
 
-    const message = ref('');
+    const message = ref("");
     const userRules = [(value) => !!value || "Usuario es requerido"];
     const passwordlRules = [(value) => !!value || "Contraseña es requerida"];
-    
 
-    const cerrar = ()=>{
+    const cerrar = () => {
       if (logged.value) {
-        router.push('/')
+        //con router redirigimos al usuario logrado hascia la ruta que le indiquemos si todo está ben
+        router.push("/");
       }
-      dialog.value =false
+      dialog.value = false;
+    };
 
-    }
-
-    const login = ()=> {
+    const login = () => {
       const dataUser = {
         username: formUser.value.user,
         password: formUser.value.password,
-      }
+      };
       try {
         getAPI.post("/api/login/", dataUser).then((data) => {
           if (data.status === 200) {
-            message.value='Usuario logeado'
-            dialog.value=true;
+            console.log(data)
+            message.value = "Usuario logeado";
+            dialog.value = true;
             logged.value = true;
-            store.commit('SET_USUARIO',dataUser)
-            localStorage.setItem('usuario',JSON.stringify(dataUser.username))
+            store.commit("SET_USUARIO", dataUser);
+            localStorage.setItem("usuario", JSON.stringify(dataUser.username));
+          } else if(data === "") {
+            console.log(data)
+            dialog.value = true;
+            message.value =
+              "Ocurrio un error al ingresar, verifique usuario y contraseña";
           }
-        })
+        });
       } catch (error) {
-        dialog.value=true;
-         message.value='Ocurrio un error al ingresar, verifique usuario y contraseña'
-         
+        console.log(error)
       }
-    }
+    };
     return {
       form,
       formUser,
@@ -100,13 +102,12 @@ export default {
       passwordlRules,
       dialog,
       message,
-      login,cerrar
-    }
-  }
+      login,
+      cerrar,
+    };
+  },
 };
 </script>
 <style scoped>
 @import "@/assets/Styles/StyleLogin.css";
 </style>
-
-

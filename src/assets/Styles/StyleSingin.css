@@ -13,27 +13,30 @@
 }
 .user__container__form {
   width: 90%;
-  max-width: 450px;
-  height: 550px;
+  max-width: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   border: 3px solid rgb(0, 0, 0);
   border-radius: 10px;
   box-shadow: 5px 5px 5px black;
-  padding: 15px;
+  padding: 20px;
   justify-content: center;
   margin-top: 10px;
 }
 .user__container h3 {
   font-family: "Bluetea";
   font-weight: 100;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 .form__btn {
   margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+button:hover {
+  color: blue;
 }
 .mensajeError {
   color: rgb(230, 0, 0);

@@ -7,7 +7,7 @@
 <script>
 import { defineComponent,computed } from "vue";
 import { useStore } from "vuex";
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 import FormularioReserva from "../components/FormularioReserva.vue";
 
 export default defineComponent({
