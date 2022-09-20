@@ -56,10 +56,28 @@
 </template>
 
 <script>
-import { ref } from "vue";
-
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import {useRouter} from 'vue-router';
 export default {
   setup() {
+
+    const router = useRouter()
+    const store = useStore()
+
+    const usuario = computed(()=>(store.getters['getUsuario']))
+
+    const verificarUsuario = ()=>{
+      if (!usuario.value) {
+        router.push('/login')
+      }
+    }
+
+    verificarUsuario()
+
+
+
+
     const maxCaracter = 50;
     const rulesMsg = [
       (value) =>

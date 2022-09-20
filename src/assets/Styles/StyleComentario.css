@@ -1,6 +1,7 @@
 .comment__main{
     margin: 0 auto;
-    width: 95%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -27,7 +28,7 @@ textarea{
     text-align: center;
 }
 .calification{    
-    width: 95%;
+    width: 90%;
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -93,12 +94,11 @@ textarea{
 @media(min-width: 1024px){
     .comment__main{
         margin: 0 auto;
-        width: 95%;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         text-align: center;
-        position: relative;
     }
     .comment__main h3{
         margin: 2% auto;
