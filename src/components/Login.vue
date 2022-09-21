@@ -70,29 +70,25 @@ export default {
       dialog.value = false;
     };
 
-    const login = () => {
+    const login = async () => {
       const dataUser = {
         username: formUser.value.user,
         password: formUser.value.password,
       };
       try {
-        getAPI.post("https://binarysystem.pythonanywhere.com/api/login/", dataUser).then((data) => {
-          if (data.status === 200) {
-            console.log(data);
-            message.value = "Usuario logeado";
-            dialog.value = true;
-            logged.value = true;
-            store.commit("SET_USUARIO", dataUser);
-            localStorage.setItem("usuario", JSON.stringify(dataUser.username));
-          } else if (data === "") {
-            console.log(data);
-            dialog.value = true;
-            message.value =
-              "Ocurrio un error al ingresar, verifique usuario y contraseña";
-          }
-        });
+        const data = await getAPI.post("/api/login/", dataUser);
+        if (data.status === 200) {
+          message.value = "Usuario logeado";
+          dialog.value = true;
+          logged.value = true;
+          store.commit("SET_USUARIO", dataUser);
+          localStorage.setItem("usuario", JSON.stringify(dataUser.username));
+        }
       } catch (error) {
-        console.log(error);
+        dialog.value = true;
+        message.value =
+          "Ocurrio un error al ingresar, verifique usuario y contraseña";
+        /*error.response.status forma de leer los errores*/
       }
     };
     return {

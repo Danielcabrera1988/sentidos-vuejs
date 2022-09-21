@@ -98,26 +98,33 @@ export default {
       }
       dialog.value = false;
     };
-    const singIn = () => {
+    const singIn = async () => {
       const dataUser = {
-        "username": formUser.value.username,
-        "email": formUser.value.email,
-        "name": formUser.value.firstName,
-        "last_name": formUser.value.lastName,
-        "password": formUser.value.password,
+        username: formUser.value.username,
+        email: formUser.value.email,
+        name: formUser.value.firstName,
+        last_name: formUser.value.lastName,
+        password: formUser.value.password,
       };
-      getAPI
-        .post("https://binarysystem.pythonanywhere.com/api/register/", dataUser)
-        .then((data) => {
-          if (data.status === 200) {
-            message.value = "¡Usuario creado correctamente!";
-            dialog.value = true;
-            register.value = true;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      try {
+        const data = await getAPI.post("/api/register/", dataUser);
+
+        if (data.status === 200) {
+          message.value = "¡Usuario creado correctamente!";
+          dialog.value = true;
+          register.value = true;
+        } else if (data.status != 200) {
+          dialog.value = true;
+          (message.value =
+            "Ocurrio un error al intentar registrar el usuario" + "Error => "),
+            data.status;
+        }
+      } catch (error) {
+        dialog.value = true;
+        message.value =
+          "Ocurrio un error al registrar el usuario => el usuario ya existe)";
+        /*error.response.status forma de leer los errores*/
+      }
     };
 
     const maxName = ref(20);
