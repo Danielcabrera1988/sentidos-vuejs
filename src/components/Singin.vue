@@ -53,7 +53,7 @@
         >
         </v-text-field>
 
-        <button class="form__btn">Enviar</button>
+        <button class="form__btn" type="submit">Enviar</button>
       </v-form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
@@ -74,10 +74,13 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { getAPI } from "../Ax-Api";
 export default {
   setup() {
+    const router = useRouter();
     const dialog = ref(false);
+    const register = ref(false);
     const message = ref("");
     const form = ref(null);
     const formUser = ref({
@@ -88,28 +91,34 @@ export default {
       password: "",
       password2: "",
     });
-
+    const cerrar = () => {
+      if (register.value) {
+        //con router redirigimos al usuario logrado hascia la ruta que le indiquemos si todo está ben
+        router.push("/");
+      }
+      dialog.value = false;
+    };
     const singIn = () => {
       const dataUser = {
-        username: formUser.value.username,
-        email: formUser.value.email,
-        name: formUser.value.firstName,
-        lastName: formUser.value.lastName,
-        password: formUser.value.password,
+        "username": formUser.value.username,
+        "email": formUser.value.email,
+        "name": formUser.value.firstName,
+        "last_name": formUser.value.lastName,
+        "password": formUser.value.password,
       };
       getAPI
-        .post("api/register/", dataUser)
+        .post("https://binarysystem.pythonanywhere.com/api/register/", dataUser)
         .then((data) => {
           if (data.status === 200) {
-            message.value = "Usuario creado correctamente!";
+            message.value = "¡Usuario creado correctamente!";
             dialog.value = true;
+            register.value = true;
           }
         })
         .catch((error) => {
           console.log(error);
         });
     };
-    singIn();
 
     const maxName = ref(20);
     const minCaracter = ref(8);
@@ -150,7 +159,6 @@ export default {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
         "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
     ];
-
     return {
       form,
       formUser,
@@ -162,6 +170,10 @@ export default {
       confirmPasswordRules,
       maxName,
       minCaracter,
+      singIn,
+      cerrar,
+      dialog,
+      message,
     };
   },
 };

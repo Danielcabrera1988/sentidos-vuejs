@@ -19,6 +19,9 @@
         <li>
           <router-link to="/blog">Blog</router-link>
         </li>
+        <li>
+          <router-link to="/Contacto">Contacto</router-link>
+        </li>
         <li  v-if="!user">
           <router-link to="/login">Login</router-link>
         </li>

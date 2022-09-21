@@ -3,7 +3,7 @@
     <h1 class="animate__animated animate__zoomIn">Sentidos</h1>
     <h3 class="animate__animated animate__zoomIn">Restaurante y casa de te</h3>
     <div class="login__form">
-      <v-form ref="form" v-on:submit.prevent="login">
+      <v-form ref="form" @submit.prevent="login">
         <v-text-field
           class="form__input"
           prepend-icon="mdi-account-outline"
@@ -76,23 +76,23 @@ export default {
         password: formUser.value.password,
       };
       try {
-        getAPI.post("/api/login/", dataUser).then((data) => {
+        getAPI.post("https://binarysystem.pythonanywhere.com/api/login/", dataUser).then((data) => {
           if (data.status === 200) {
-            console.log(data)
+            console.log(data);
             message.value = "Usuario logeado";
             dialog.value = true;
             logged.value = true;
             store.commit("SET_USUARIO", dataUser);
             localStorage.setItem("usuario", JSON.stringify(dataUser.username));
-          } else if(data === "") {
-            console.log(data)
+          } else if (data === "") {
+            console.log(data);
             dialog.value = true;
             message.value =
               "Ocurrio un error al ingresar, verifique usuario y contraseña";
           }
         });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
     return {

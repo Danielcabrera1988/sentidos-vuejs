@@ -74,16 +74,19 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { getAPI } from "../Ax-Api";
+import { getAPI }  from "../Ax-Api";
 export default defineComponent({
+
   setup() {
-    const path = "https://alexlopez.pythonanywhere.com/";
+    //const path = "https://alexlopez.pythonanywhere.com/";
+    const path = "https://binarysystem.pythonanywhere.com/";
     const productos = ref([]);
+
     const changeShow = (item) => {
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("/food/");
+      const { data } = await getAPI.get("https://binarysystem.pythonanywhere.com/food/");
       productos.value = data;
     };
 
