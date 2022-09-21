@@ -78,7 +78,6 @@ import { getAPI }  from "../Ax-Api";
 export default defineComponent({
 
   setup() {
-    //const path = "https://alexlopez.pythonanywhere.com/";
     const path = "https://binarysystem.pythonanywhere.com/";
     const productos = ref([]);
 

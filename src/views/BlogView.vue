@@ -1,14 +1,14 @@
 <template>
   <div>
-    <HeaderBlog />
+    <Blog />
   </div>
 </template>
 
 <script >
 import { defineComponent } from "vue";
-import HeaderBlog from "@/components/HeaderBlog.vue";
+import Blog from "@/components/Blog.vue";
 export default defineComponent({
-  components: { HeaderBlog },
+  components: { Blog },
   setup() {
     //
   },

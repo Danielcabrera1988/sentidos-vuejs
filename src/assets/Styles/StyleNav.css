@@ -63,6 +63,7 @@
   }
   .nav__links ul li{
     text-align: center;
+    align-items: center;
   }
   .nav__links ul li a{
     padding: .5rem 1rem;

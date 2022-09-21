@@ -31,8 +31,8 @@
         <li v-if="user">
           <router-link to="/">{{user.username}}</router-link>
         </li>
-        <li style="cursor:pointer;" @click="cerrarSesion" v-if="user">
-           Cerrar
+        <li class="nav__close" style="cursor:pointer;" @click="cerrarSesion" v-if="user">
+           <router-link to="/">Logout</router-link>
         </li>
       </ul>
     </div>
