@@ -32,7 +32,7 @@
           <router-link to="/">{{user.username}}</router-link>
         </li>
         <li class="nav__close" style="cursor:pointer;" @click="cerrarSesion" v-if="user">
-           <router-link to="/">Logout</router-link>
+           <router-link to="/">Cerrar Sesión</router-link>
         </li>
       </ul>
     </div>

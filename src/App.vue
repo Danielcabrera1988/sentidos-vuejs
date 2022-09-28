@@ -1,4 +1,3 @@
-<!--Acá se arma toda la magia-->
 <template>
   <v-app class="general">
     <Navigation />

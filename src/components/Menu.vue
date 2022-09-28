@@ -7,21 +7,16 @@
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
       <h2 class="header__title">Download The Menu</h2>
+      
       <p class="header__description">
-        "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
-        platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado. Una progresión de ingredientes raros y
-        hermosos donde la textura, el sabor y la armonía son primordiales.
-        Sumérjase en la experiencia gastronómica de Quay con el menú de Peter
-        Gilmore y la lista de vinos cuidadosamente seleccionada por la directora
-        de Fink Wine, Amanda Yallop.
+        "La mejor combinación de sabores la podes encontrar acá. Todos nuestros platos son elavorados con los mal altos estandares de cocina y por personal altamente capacitado. Una progresión de ingredientes exóticos y hermosos donde la textura, el sabor y la armonía son primordiales.
+        Sumérjase en la experiencia gastronómica de Sentidos con el menú de Peter Gilmore y la lista de vinos cuidadosamente seleccionada por la directora de Fink Wine, Amanda Yallop."
       </p>
     </div>
     <div class="menu__cards">
       <h3 class="menu__title">¡Algunas de nuestas delicias! 😋</h3>
       <p class="menu__description">
-        Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
-        completo desde el QR y a disfrutar de una lluvia de exquisitos sabores.
+        Si quieres saber más de estas exquisitas comidas, sólo descarga el menu completo desde el QR y a disfrutar de una lluvia de exquisitos sabores.
       </p>
       <v-row>
         <v-col
