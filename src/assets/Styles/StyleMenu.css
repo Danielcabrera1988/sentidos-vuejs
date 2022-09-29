@@ -183,13 +183,13 @@
     align-items: center;
     text-align: center;
     margin-top: 5%;
-    font-size: 20px;
+    font-size: 34px;
     color: white;
   }
   .qr_img {
     width: 30%;
-    max-width: 400px;
-    margin: 10% auto 0 auto;
+    max-width: 450px;
+    margin: 12% auto 0 auto;
     position: absolute;
   }
   .header__description {
@@ -223,6 +223,7 @@
     text-align: justify;
   }
   .cards__conteiners {
+    width: 100%;
     margin: 10px auto 0 auto;
     border-radius: 5px;
     box-shadow: 5px 8px 12px black;

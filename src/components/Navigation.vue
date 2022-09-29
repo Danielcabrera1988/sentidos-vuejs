@@ -2,7 +2,9 @@
   <nav class="nav__main">
     <div class="nav__title">Sentidos</div>
 
-    <v-btn class="toggle__btn" @click="toggleBtn" style="color: black"><v-icon>mdi-menu</v-icon></v-btn>
+    <v-btn class="toggle__btn" @click="toggleBtn" style="color: black"
+      ><v-icon>mdi-menu</v-icon></v-btn
+    >
 
     <div class="nav__links" :class="active ? 'active' : ''">
       <!-- NavBar -->
@@ -22,17 +24,23 @@
         <li>
           <router-link to="/Contacto">Contacto</router-link>
         </li>
-        <li  v-if="!user">
+        <li v-if="!user">
           <router-link to="/login">Login</router-link>
         </li>
         <li v-if="!user">
           <router-link to="/singin">Sing in</router-link>
         </li>
         <li v-if="user">
-          <router-link to="/">{{user.username}}</router-link>
+          <router-link to="/">{{ user.username }}</router-link
+          ><!-- falta la vista del usuario -->
         </li>
-        <li class="nav__close" style="cursor:pointer;" @click="cerrarSesion" v-if="user">
-           <router-link to="/">Cerrar Sesión</router-link>
+        <li
+          class="nav__close"
+          style="cursor: pointer"
+          @click="cerrarSesion"
+          v-if="user"
+        >
+          <router-link to="/">Cerrar Sesión</router-link>
         </li>
       </ul>
     </div>
@@ -40,45 +48,43 @@
 </template>
 
 <script>
-import { defineComponent, ref,computed } from "vue";
-import {useStore} from 'vuex';
+import { defineComponent, ref, computed } from "vue";
+import { useStore } from "vuex";
 export default defineComponent({
   setup() {
-    
-    const store = useStore()
+    const store = useStore();
     //la función computed esta constantemente analizando si hay cambios par aactualizarlos
-    const user = computed(() => (store.getters['getUsuario']))
+    const user = computed(() => store.getters["getUsuario"]);
 
-    const  verificarLocalStorage = () =>{
-      if (localStorage.getItem('usuario')) {
-        store.commit('SET_USUARIO',{username:JSON.parse(localStorage.getItem('usuario')),password:'*****'})
+    const verificarLocalStorage = () => {
+      if (localStorage.getItem("usuario")) {
+        store.commit("SET_USUARIO", JSON.parse(localStorage.getItem("usuario")),
+        );
       }
-    }
+    };
 
-    verificarLocalStorage()
+    verificarLocalStorage();
 
     const active = ref(false);
     const toggleBtn = () => {
       active.value = !active.value;
     };
-    const cerrarSesion = ()=>{
+    const cerrarSesion = () => {
       //commit se usa para llamar a las mutaciones dentro del store
-      store.commit('SET_USUARIO',null)
-      localStorage.removeItem('usuario')
-    }
+      store.commit("SET_USUARIO", null);
+      localStorage.removeItem("usuario");
+    };
     return {
       active,
-      toggleBtn,
       user,
-      cerrarSesion
+      toggleBtn,
+      cerrarSesion,
     };
   },
 });
 </script>
 
-
-
-
-<style  scoped>
+<style scoped>
 @import "../assets/Styles/StyleNav.css";
-</style>s
+</style>
+s

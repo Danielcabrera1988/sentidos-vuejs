@@ -1,13 +1,14 @@
 <template>
   <div class="comment__main">
-    <h3 class="animate__animated animate__bounce">¡Gracias por dejar tu comentario!</h3>
     <div class="comment__msg">
+      <h3 class="animate__animated animate__bounce">
+        ¡Gracias por dejar tu comentario!
+      </h3>
       <v-textarea
-        :counter="maxCaracter"
+        class="comment__area"
         variant="outlined"
-        name="msg"
-        label="Mensaje"
-        :rules="rulesMsg"
+        label="Comentario"
+        v-model="userData.message"
       ></v-textarea>
     </div>
     <div class="comment__calification">
@@ -15,7 +16,7 @@
         <h3>Atencion</h3>
         <!-- atention -->
         <v-rating
-          v-model="rating.atention"
+          v-model="userData.atention"
           bg-color="orange-lighten-1"
           color="blue"
         ></v-rating>
@@ -24,7 +25,7 @@
         <h3>Lugar</h3>
         <!-- place -->
         <v-rating
-          v-model="rating.place"
+          v-model="userData.place"
           bg-color="orange-lighten-1"
           color="blue"
         ></v-rating>
@@ -33,7 +34,7 @@
         <h3>Comida</h3>
         <!-- Food -->
         <v-rating
-          v-model="rating.food"
+          v-model="userData.food"
           bg-color="orange-lighten-1"
           color="blue"
         ></v-rating>
@@ -42,58 +43,101 @@
         <h3>Precio</h3>
         <!-- price -->
         <v-rating
-          v-model="rating.price"
+          v-model="userData.price"
           bg-color="orange-lighten-1"
           color="blue"
         ></v-rating>
       </div>
     </div>
     <div class="comment__btn__action">
-      <v-btn class="btn__back" to="/blog">Volver</v-btn>
-      <v-btn class="btn__submit" type="submit" action="metodoParaCalificar">Enviar</v-btn>
+      <button class="btn__back" to="/blog">Volver</button>
+      <button class="btn__submit" @click="userCalification">Enviar</button>
     </div>
+
+  </div>
+  <div class="text-center">
+    <v-dialog v-model="dialog">
+      <v-card>
+        <v-card-text>
+          {{ message }}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" block @click="cerrar">Cerrar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
-import {useRouter} from 'vue-router';
+import { useRouter } from "vue-router";
+import { getAPI } from "../Ax-Api";
 export default {
   setup() {
-
-    const router = useRouter()
-    const store = useStore()
-
-    const usuario = computed(()=>(store.getters['getUsuario']))
-
-    const verificarUsuario = ()=>{
-      if (!usuario.value) {
-        router.push('/login')
-      }
-    }
-
-    verificarUsuario()
-
-
-
-
-    const maxCaracter = 50;
-    const rulesMsg = [
-      (value) =>
-        value.length <= 50 || "El msj no puede exceder los 50 caracteres",
-    ];
-
-    const rating = ref({
+    const router = useRouter();
+    const store = useStore();
+    const dialog = ref(false);
+    const message = ref("");
+    const register = ref(false);
+    const usuario = computed(() => store.getters["getUsuario"]);
+    const userData = ref({
+      user: "",
+      message: "",
       atention: 3,
       place: 3,
       food: 3,
       price: 3,
     });
+    const cerrar = () => {
+      if (register.value) {
+        //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
+        router.push("/blog");
+      }
+      dialog.value = false;
+    };
+
+    const verificarUsuario = () => {
+      if (!usuario.value) {
+        router.push("/login");
+      }
+    };
+    verificarUsuario();
+
+    const userCalification = async () => {
+      const dataComment = {
+        user: usuario.value.username.id,
+        comment: userData.value.message,
+        attention: userData.value.atention,
+        place: userData.value.place,
+        food: userData.value.food,
+        price: userData.value.price,
+      };
+      try {
+        const data = await getAPI.post("/api/opinions/", dataComment);
+        if (data.status === 200) {
+          message.value = "¡Gracias por dejarnos tus comentario! ¡Nos ayuda a mejorar cada día!";
+          dialog.value = true;
+          register.value = true;
+        } else if (data.status != 200) {
+          dialog.value = true;
+          message.value = "Ocurrio un error al intentar registrar el usuario";
+        }
+      } catch (error) {
+        dialog.value = true;
+        message.value = "Ocurrio un error inesperado, vuelva a intentarlo mas tarde, disculpe las molestias ocasionadas";
+        /*error.response.status forma de leer los errores*/
+      }
+    };
     return {
-      rating,
-      rulesMsg,
-      maxCaracter,
+      userCalification,
+      cerrar,
+      userData,
+      message,
+      dialog,
+      usuario
     };
   },
 };

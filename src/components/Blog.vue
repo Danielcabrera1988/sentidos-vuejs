@@ -1,19 +1,17 @@
 <template>
   <div class="blog__container">
-    
     <div class="blog__container__main">
-
       <div class="main__comment__points">
         <div class="blog__comments__container">
           <h2>Seccion Comentarios ✍</h2>
           <!-- cards comments -->
           <div
-            :class="i % 2 == 0 ? 'comments__cards' : 'comments__cards__inverse'"
-            v-for="(comment, i) in comments"
+            class="comments__cards"
+            v-for="(data, i) in dataUser"
             :key="i"
           >
-            <p class="comments__user">{{ comment.name }}</p>
-            <p class="comments__text">{{ comment.comment }}</p>
+            <p class="comments__user">{{ data.user.username }}</p>
+            <p class="comments__text">{{ data.comment }}</p>
           </div>
         </div>
         <div class="blog__calification__container">
@@ -90,29 +88,21 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { getAPI }  from "../Ax-Api";
 export default defineComponent({
   setup() {
-    const comments = [
-      {
-        name: "Messi",
-        comment: "descripcion",
-      },
-      {
-        name: "De Paul",
-        comment: "descripcion",
-      },
-      {
-        name: "Kun",
-        comment: "descripcion",
-      },
-      {
-        name: "Dibu",
-        comment: "descripcion",
-      },
-    ];
+
+    const dataUser = ref([]);
+    const fetchComentarios = async () => {
+      const { data } = await getAPI.get("/api/listOpinions/");
+      dataUser.value = data;
+    };
+
+    fetchComentarios();
+
     return {
-      comments,
+      dataUser,
     };
   },
 });

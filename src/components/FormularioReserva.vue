@@ -32,6 +32,7 @@
           <v-btn
             class="selection__table"
             style="color: black"
+            :color="reservaUser.mesas.includes(number) ? 'blue' : 'white'"
             @click="addTable(number)"
             >{{ number }}</v-btn
           >
@@ -83,8 +84,9 @@ import moment from "moment";
 
 export default {
   setup() {
+    const reservado = ref(true);
     const form = ref(null);
-    const fechaMinima = moment().add(2, "days").format("YYYY-MM-DD");
+    const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const reservaUser = ref({
       fecha: fechaMinima,
       mesas: [],
@@ -126,6 +128,7 @@ export default {
       mesasRules,
       fechaRules,
       fechaMinima,
+      reservado,
     };
   },
 };

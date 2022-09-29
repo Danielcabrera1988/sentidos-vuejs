@@ -80,7 +80,7 @@ export default defineComponent({
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("https://binarysystem.pythonanywhere.com/food/");
+      const { data } = await getAPI.get("/food/");
       productos.value = data;
     };
 
