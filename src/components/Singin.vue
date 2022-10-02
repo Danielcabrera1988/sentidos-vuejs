@@ -2,88 +2,88 @@
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
     <div class="user__container__form">
-      <form @submit.prevent="singIn">
+      <form @submit.prevent="singIn" class="container__form">
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.name"
           prepend-icon="mdi-account"
           label="Nombre y Apellido"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.name.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.dni"
           prepend-icon="mdi-account"
           type="number"
           label="DNI"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.dni.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
 
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.userName"
           prepend-icon="mdi-account"
           label="Usuario"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.userName.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
 
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.email"
           type="text"
           prepend-icon="mdi-email-outline"
           label="E-mail"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.email.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
 
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.password"
           label="Password"
           prepend-icon="mdi-lock-outline"
           type="password"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.password.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
 
         <v-text-field
-          class="ma-2"
+          class="ma-3"
           v-model="formUser.confirmPassword"
           label="Verify Password"
           prepend-icon="mdi-lock-outline"
           type="password"
           hide-details="false"
         /><span
-          style="color: red; margin-left: 50px"
+          style="color: red;"
           v-for="error in v$.confirmPassword.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
-
+        <br/>
         <button class="form__btn">Enviar</button>
       </form>
     </div>
@@ -162,7 +162,10 @@ export default {
         },
         password: {
           required: helpers.withMessage("Contraseña es requerida", required),
-          minLength: helpers.withMessage("Debe contener al menos 8 caracteres", minLength(8)),
+          minLength: helpers.withMessage(
+            "Debe contener al menos 8 caracteres",
+            minLength(8)
+          ),
         },
         confirmPassword: {
           required: helpers.withMessage("Confirmación es requerida ", required),
@@ -174,7 +177,7 @@ export default {
       };
     });
 
-    const v$ = useVuelidate(rules, formUser);//asociacion de datos input con las reglas establecidas
+    const v$ = useVuelidate(rules, formUser); //asociacion de datos input con las reglas establecidas
 
     const singIn = async () => {
       const dataUser = {
@@ -205,9 +208,9 @@ export default {
     };
 
     return {
-      formUser,
       singIn,
       cerrar,
+      formUser,
       v$,
       dialog,
       message,
@@ -215,6 +218,6 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 @import "../assets/Styles/StyleSingin.css";
 </style>
