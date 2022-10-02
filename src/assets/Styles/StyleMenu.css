@@ -1,7 +1,6 @@
 .menu__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
 }
 .menu__container__header {
@@ -16,13 +15,13 @@
 .banner_img {
   width: 100%;
   border-radius: 10px;
-  margin: 5px auto;
+  margin: 15px auto;
 }
 .header__title {
   position: absolute;
   align-items: center;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 20px;
   color: white;
 }
@@ -44,36 +43,33 @@
 .menu__cards {
   /* H3+P+CARDS*/
   width: 95%;
-  margin: 10px auto 30px auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-size: 12px;
 }
 .menu__title {
-  width: 100%;
   font-size: 22px;
   text-align: center;
 }
 .menu__description {
-  width: 100%;
   font-size: 14px;
   font-weight: 500;
   text-align: justify;
 }
 .cards__conteiners {
-  margin: 10px auto 0 auto;
+  margin: 10px auto;
   border-radius: 5px;
   box-shadow: 5px 8px 12px black;
   transition: all 0.3s ease-in-out;
 }
-.cards__conteiners img {
-  width: 100%;
-  height: 100%;
+.card__price{
+  font-weight: 600;
+  font-size: 18px;
 }
-.cards__conteiners:hover {
-  cursor: pointer;
-  transform: scale(1.02);
+.card__description{
+  font-style: oblique;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
@@ -95,7 +91,7 @@
   .banner_img {
     width: 100%;
     border-radius: 10px;
-    margin: 5px auto;
+    margin: 15px auto;
   }
   .header__title {
     position: absolute;
@@ -117,45 +113,7 @@
     font-weight: 500;
     text-align: justify;
     font-style: oblique;
-  }
-  
-  /* menu__cards */
-  .menu__cards {
-    /* H3+P+CARDS*/
-    width: 95%;
-    margin: 10px auto 30px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-  }
-  .menu__title {
-    width: 100%;
-    font-size: 22px;
-    text-align: center;
-  }
-  .menu__description {
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    text-align: justify;
-  }
-  .cards__conteiners {
-    margin: 10px auto 0 auto;
-    border-radius: 5px;
-    box-shadow: 5px 8px 12px black;
-    /* transition: all 0.3s ease-in-out; */
-  }
-  .cards__conteiners img {
-    width: 100%;
-    height: 100%;
-  }
-  /* solo para pc - NO MOVIL
-  .cards__conteiners:hover {
-    cursor: pointer;
-    transform: scale(1.02);
-  }*/
-  
+  }    
 }
 @media (min-width: 1024px) {
   .menu__container {
@@ -176,7 +134,7 @@
   .banner_img {
     width: 100%;
     border-radius: 10px;
-    margin: 5px auto;
+    margin: 15px auto;
   }
   .header__title {
     position: absolute;
@@ -199,39 +157,6 @@
     font-weight: 500;
     text-align: justify;
     font-style: oblique;
-  }
-  
-  /* menu__cards */
-  .menu__cards {
-    /* H3+P+CARDS*/
-    width: 95%;
-    margin: 10px auto 30px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 12px;
-  }
-  .menu__title {
-    width: 100%;
-    font-size: 22px;
-    text-align: center;
-  }
-  .menu__description {
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    text-align: justify;
-  }
-  .cards__conteiners {
-    width: 100%;
-    margin: 10px auto 0 auto;
-    border-radius: 5px;
-    box-shadow: 5px 8px 12px black;
-    transition: all 0.3s ease-in-out;
-  }
-  .cards__conteiners img {
-    width: 100%;
-    height: 100%;
   }
   .cards__conteiners:hover {
     cursor: pointer;

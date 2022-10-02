@@ -119,9 +119,9 @@ import {
 export default {
   setup() {
     const router = useRouter();
+    const register = ref(false);
     const dialog = ref(false);
     const message = ref("");
-    const register = ref(false);
     const formUser = ref({
       name: "",
       dni: "",
