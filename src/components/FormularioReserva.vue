@@ -2,7 +2,7 @@
   <div class="reserva__container">
     <!-- Captura de datos -->
     <div class="container__reserva__data">
-      <div class="reserva__img">
+      <div class="reserva__img__text">
         <img
           class="reserva__img__logo"
           :src="require('../assets/Img/LogoSentidos2.png')"
@@ -18,63 +18,83 @@
       </div>
       <div class="reserva__selection">
         <p class="reserva__selection__title">Sleccione una fecha</p>
+
         <v-text-field
           type="date"
           variant="outlined"
-          :rules="fechaRules"
           v-model="reservaUser.fecha"
+          hide-details="false"
           :min="fechaMinima"
-        ></v-text-field>
+        />
 
-        <p>Seleccione un horario</p>
+        <p class="reserva_horario_title">Seleccione un horario</p>
         <v-select
           :items="items"
           label="Horarios"
           variant="outlined"
+          hide-details="false"
           v-model="reservaUser.horario"
-        ></v-select>
-
-        <p>Seleccione las mesas</p>
+        /><span
+          style="color: red"
+          v-for="error in v$.horario.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
+        <button class="form__btn" @click="find">Buscar</button>
       </div>
       <div class="reserva_selection_show">
         <button class="reserva_selected" disabled>Reservado</button>
         <button class="reserva_libre" disabled>Libre</button>
       </div>
-      <v-row class="reserva__selection__table">
-        <v-col cols="3" v-for="number in 20" v-bind:key="number">
-          <v-btn
-            class="selection__table"
-            style="color: black"
-            :color="reservaUser.mesas.includes(number) ? 'blue' : 'white'"
-            @click="addTable(number)"
-            >{{ number }}</v-btn
-          >
-        </v-col>
-      </v-row>
+      <div class="reserva__selection__mesas">
+        <p class="reserva_mesas_title">Seleccione las mesas</p>
+        <v-row class="reserva__selection__table">
+          <v-col cols="3" v-for="number in 20" v-bind:key="number">
+            <v-btn
+              class="selection__table"
+              style="color: black"
+              :color="reservaUser.mesas.includes(number) ? 'blue' : 'white'"
+              @click="addTable(number)"
+              >{{ number }}</v-btn
+            >
+          </v-col>
+        </v-row>
+      </div>
     </div>
     <!-- Formulario del usuario -->
     <div class="container__reserva__form">
       <h2>Confirmación de Reserva</h2>
-      <v-form class="reserva__form__data" @submit.prevent="makeReservation">
+      <form class="reserva__form__data" @submit.prevent="makeReservation">
         <v-text-field
           variant="outlined"
           v-model="reservaUser.tel"
           label="Teléfono"
-        ></v-text-field>
+          hide-details="false"
+          class="ma-3"
+        /><span
+          style="color: red"
+          v-for="error in v$.tel.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
 
         <v-text-field
           variant="outlined"
           readonly
           v-model="reservaUser.mesas"
           label="Mesas Seleccionadas"
-        ></v-text-field>
+          hide-details="false"
+          class="ma-3"
+        /><span
+          style="color: red"
+          v-for="error in v$.mesas.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
 
-        <button class="form__btn" type="submit">Enviar</button>
-      </v-form>
+        <button class="form__btn">Enviar</button>
+      </form>
     </div>
-    <p>{{  }}</p>
-    <!--     <p v-for="res in reservas" :key="res">{{res.selected_tables}}</p>
- -->
     <!-- Mensajes para el usuario -->
     <div class="text-center">
       <v-dialog v-model="dialog">
@@ -97,6 +117,8 @@ import { useStore } from "vuex";
 import moment from "moment";
 import { useRouter } from "vue-router";
 import { getAPI } from "../Ax-Api";
+import useVuelidate from "@vuelidate/core";
+import { required, helpers, numeric } from "@vuelidate/validators";
 export default {
   setup() {
     const store = useStore();
@@ -114,10 +136,16 @@ export default {
       fecha: fechaMinima,
       mesas: [],
       horario: "",
-      user_id: user.value.id,
+      user_id: "",
       tel: "",
     });
-    
+
+    const verificarUsuario = () => {
+      if (!user.value) {
+        router.push("/login");
+      }
+    };
+    verificarUsuario();
     const addTable = (idMesa) => {
       /* agregacion de mesas y eliminacion si toca 2 veces la misma mesa */
       if (reservaUser.value.mesas.includes(idMesa)) {
@@ -128,12 +156,32 @@ export default {
         reservaUser.value.mesas.push(idMesa);
       }
     };
-    const mesasRules = [
-      (value) => value.length > 0 || "La cantidad de mesas es requerida",
-    ];
-    const fechaRules = [(value) => !!value || "La fecha es requerida"];
 
-    const telRules = [(value) => !!value || "Teléfono es requerido"];
+    const rules = computed(() => {
+      return {
+        fecha: {
+          required: helpers.withMessage("Debe seleccionar una fecha", required),
+        },
+        mesas: {
+          required: helpers.withMessage("Debe eligir las mesas", required),
+        },
+        horario: {
+          required: helpers.withMessage(
+            "Debe seleccionar un horario",
+            required
+          ),
+        },
+        tel: {
+          required: helpers.withMessage(
+            "Debe introducir su número de teléfono ",
+            required
+          ),
+          numeric: helpers.withMessage("Sólo números", numeric),
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, reservaUser);
     /* metodo para cerrar el diagolo de exito o error, de comunicación con el usuario */
     const cerrar = () => {
       if (register.value) {
@@ -142,29 +190,37 @@ export default {
       }
       dialog.value = false;
     };
-    /* Cargo todas las reservas dentro de reservas */
-    const allReserved = async () => {
-      const { data } = await getAPI.get("/api/allReservation");
+    /* Cargo todas las reservas filtradas por dia y horario */
+    /* const allReserved = async () => {
+      const dataFilter = {
+        date: reservaUser.value.fecha,
+        schedule: reservaUser.value.horario,
+      }
+      const { data } = await getAPI.get("/api/getReservation", dataFilter);//pasar dia y horario para filtrar
       reservas.value = data;
     };
-    allReserved();
+    allReserved(); */
+
     const makeReservation = async () => {
+      const dataUser = {
+        user_id: user.value.id,
+        phone: reservaUser.value.tel,
+        schedule: reservaUser.value.horario,
+        date: reservaUser.value.fecha,
+        selected_tables: reservaUser.value.mesas.toString(),
+      };
       try {
-        const dataUser = {
-          user_id: reservaUser.value.user_id,
-          phone: reservaUser.value.tel,
-          schedule: reservaUser.value.horario,
-          date: reservaUser.value.fecha,
-          selected_tables: reservaUser.value.mesas.toString(),
-        };
-        const data = await getAPI.post("/api/reservation/", dataUser);
-        if (data.status === 200) {
-          message.value = "¡Reserva realizada correctamente!";
-          dialog.value = true;
-          register.value = true;
-        } else if (data.status != 200) {
-          dialog.value = true;
-          message.value = "Ocurrio un error al intentar registrar el usuario";
+        const result = await v$.value.$validate();
+        if (result) {
+          const data = await getAPI.post("/api/reservation/", dataUser);
+          if (data.status === 200) {
+            message.value = "¡Reserva realizada correctamente!";
+            dialog.value = true;
+            register.value = true;
+          } else if (data.status != 200) {
+            dialog.value = true;
+            message.value = "Ocurrio un error al intentar registrar el usuario";
+          }
         }
       } catch (error) {
         dialog.value = true;
@@ -172,17 +228,15 @@ export default {
         /*error.response.status forma de leer los errores*/
       }
     };
+
     return {
       cerrar,
       makeReservation,
+      addTable,
+      v$,
       items,
       form,
       reservaUser,
-      telRules,
-      addTable,
-      mesasRules,
-      fechaRules,
-      fechaMinima,
       reservado,
       dialog,
       message,

@@ -18,7 +18,7 @@
         >
       </div>
       <div class="comment__form">
-        <form @submit.prevent="sendContact">
+        <form class="comment__form__data" @submit.prevent="sendContact">
           <v-text-field
             class="ma-4"
             prepend-icon="mdi-account-outline"
@@ -59,7 +59,7 @@
             >{{ error.$message }}</span
           >
           <br />
-          <button class="btn__submit">Enviar</button>
+          <button class="form__btn">Enviar</button>
         </form>
       </div>
     </div>
@@ -108,6 +108,7 @@ export default {
       message: "",
       telefono: "",
     });
+
     const cerrar = () => {
       if (register.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
@@ -165,13 +166,13 @@ export default {
               register.value = true;
             } else if (data.status != 200) {
               dialog.value = true;
-              message.value =
-                "Ocurrio un error al intentar enviar su consulta";
+              message.value = "Ocurrio un error al intentar enviar su consulta";
             }
           }
         } catch (error) {
           dialog.value = true;
-          message.value = "Ocurrio un error inesperado, por favor intente mas tarde";
+          message.value =
+            "Ocurrio un error inesperado, por favor intente mas tarde";
           /*error.response.status forma de leer los errores*/
         }
       }

@@ -88,6 +88,7 @@
       </form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
+    <!-- Mensajes para el usuario -->
     <div class="text-center">
       <v-dialog v-model="dialog">
         <v-card>

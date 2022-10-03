@@ -3,12 +3,13 @@
   font-family: var(--font-monse);
 }
 
-:root{
+:root {
   --font-monse: "Montserrat", sans-serif;
-  --main-bg-color: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);;
-  --color-one: #f28E85;
-  --color-two: #F294C8;
-  --color-three: #F2A0BE;
-  --color-four: #D9Ad5B;
+  --main-bg-color: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  --color-one: #f28e85;
+  --color-two: #f294c8;
+  --color-three: #f2a0be;
+  --color-four: #d9ad5b;
   --color-fonts: whitesmoke;
+  --clip: circle(0% at 50% 50%);
 }

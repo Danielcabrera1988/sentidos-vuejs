@@ -1,6 +1,4 @@
 .comment__main {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -35,11 +33,33 @@ textarea {
   border-radius: 10px;
   box-shadow: 5px 5px 5px black;
 }
-.btn__submit {
+.comment__form__data{
   display: flex;
   flex-direction: column;
-  margin: 10px auto;
+}
+.form__btn {
+  width: 120px;
+  height: 40px;
+  margin: 5px auto 5px auto;
+  position: relative;
+  z-index: 1;
   font-weight: 700;
+}
+.form__btn::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #a6c1ee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  clip-path: var(--clip);
+  transition: clip-path 1.5s;
+}
+.form__btn:hover::before{
+  clip-path: circle(70.7% at 50% 50%);
 }
 .comment__main__img {
   width: 90%;

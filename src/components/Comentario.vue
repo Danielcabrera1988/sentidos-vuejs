@@ -70,7 +70,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
