@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
 }
 .menu__container__header {
   /* img+qr+h1+p */
@@ -62,104 +63,52 @@
   box-shadow: 5px 8px 12px black;
   transition: all 0.3s ease-in-out;
 }
-.card__price{
+.card__price {
   font-weight: 600;
   font-size: 18px;
 }
-.card__description{
+.card__description {
   font-style: oblique;
   font-size: 14px;
   font-weight: 600;
 }
 
 @media (min-width: 768px) {
-  .menu__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  .menu__container__header {
-    /* img+qr+h1+p */
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .banner_img {
-    width: 100%;
-    border-radius: 10px;
-    margin: 15px auto;
-  }
   .header__title {
-    position: absolute;
-    align-items: center;
-    text-align: center;
     margin-top: 35px;
     font-size: 22px;
-    color: white;
   }
   .qr_img {
-    width: 30%;
     margin: 90px auto 0 auto;
-    position: absolute;
   }
   .header__description {
-    width: 100%;
-    margin-bottom: 10px;
     font-size: 16px;
-    font-weight: 500;
-    text-align: justify;
-    font-style: oblique;
-  }    
+  }
+  .menu__title {
+    font-size: 24px;
+  }
+  .menu__description {
+    font-size: 16px;
+  }
 }
 @media (min-width: 1024px) {
-  .menu__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  .menu__container__header {
-    /* img+qr+h1+p */
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .banner_img {
-    width: 100%;
-    border-radius: 10px;
-    margin: 15px auto;
-  }
+  
   .header__title {
-    position: absolute;
-    align-items: center;
-    text-align: center;
     margin-top: 5%;
     font-size: 34px;
-    color: white;
   }
   .qr_img {
-    width: 30%;
     max-width: 450px;
     margin: 12% auto 0 auto;
-    position: absolute;
   }
   .header__description {
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    text-align: justify;
-    font-style: oblique;
+    font-size: 18px;
+  }
+  .menu__description {
+    font-size: 20px;
   }
   .cards__conteiners:hover {
     cursor: pointer;
     transform: scale(1.02);
-  }  
+  }
 }
