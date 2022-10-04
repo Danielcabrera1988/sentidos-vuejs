@@ -38,6 +38,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
 }
 .comment__btn__action {
@@ -49,117 +50,29 @@ textarea {
   margin: 5% auto;
   font-weight: 700;
 }
-
-@media (min-width: 768px) {
-    .comment__main {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .comment__msg {
-        width: 90%;
-        height: 100%;
-        margin: 0 auto;
-      }
-      .comment__area{
-          width: 100%;
-          height: 100%;
-          max-width: 500px;
-          margin: 0 auto;
-      }
-      .comment__msg h3 {
-        margin: 5% auto;
-        text-align: center;
-      }
-      
-      textarea {
-        resize: none;
-      }
-      .comment__calification {
-        width: 90%;
-        max-width: 400px;
-        margin: 1% auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .calification {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 auto;
-      }
-      .comment__btn__action {
-        width: 90%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin: 5% auto;
-        font-weight: 700;
-      }
-      .btn__back:hover{
-        color: blue;
-      }
-      .btn__submit:hover{
-        color: blue;
-      }
+.btn__effect{
+  width: 120px;
+  height: 40px;
+  margin: 5px auto 5px auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
 }
-@media (min-width: 1024px) {
-    .comment__main {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .comment__msg {
-        width: 90%;
-        height: 100%;
-        margin: 0 auto;
-      }
-      .comment__area{
-          width: 100%;
-          height: 100%;
-          max-width: 500px;
-          margin: 0 auto;
-      }
-      .comment__msg h3 {
-        margin: 5% auto;
-        text-align: center;
-      }
-      
-      textarea {
-        resize: none;
-      }
-      .comment__calification {
-        width: 90%;
-        max-width: 400px;
-        margin: 1% auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .calification {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto;
-      }
-      .comment__btn__action {
-        width: 90%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin: 5% auto;
-        font-weight: 700;
-      }
+.btn__effect::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #a6c1ee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  clip-path: var(--clip);
+  transition: clip-path 1.5s;
+}
+.btn__effect:hover::before{
+  clip-path: circle(69% at 50% 50%);
 }

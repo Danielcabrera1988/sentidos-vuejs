@@ -31,7 +31,7 @@
           <router-link to="/singin">Sing in</router-link>
         </li>
         <li v-if="user">
-          <router-link to="/">{{ user.username }}</router-link
+          <router-link to="/misreservas">{{ user.username }}</router-link
           ><!-- falta la vista del usuario -->
         </li>
         <li

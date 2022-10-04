@@ -177,10 +177,7 @@ export default {
       tel: "",
     });
 
-    /* magia para nahuel xD */
-    const lock = computed(() => {
-       return flagReserva;
-    });
+    
     /* Verifico si existe un usuario logeado, sino te redirige al login */
     const verificarUsuario = () => {
       if (!user.value) {
@@ -239,7 +236,7 @@ export default {
     /* Cargo todas las reservas filtradas por dia y horario */
     const allReserved = async () => {
       //pasar dia y horario para filtrar
-      
+
       reservas.value = [];
       const data = await getAPI.get("/api/getReservation/", {
         params: {
@@ -302,8 +299,7 @@ export default {
       reservas,
       fechaMinima,
       fechaMaxima,
-      lock,
-      flagReserva
+      flagReserva,
     };
   },
 };

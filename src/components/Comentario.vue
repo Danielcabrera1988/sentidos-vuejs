@@ -9,6 +9,8 @@
         variant="outlined"
         label="Comentario"
         v-model="userData.message"
+        :rules="rulesMsg"
+        :counter="maxCaracter"
       ></v-textarea>
     </div>
     <div class="comment__calification">
@@ -50,10 +52,9 @@
       </div>
     </div>
     <div class="comment__btn__action">
-      <button class="btn__back" to="/blog">Volver</button>
-      <button class="btn__submit" @click="userCalification">Enviar</button>
+      <button class="btn__effect" to="/blog">Volver</button>
+      <button class="btn__effect" @click="userCalification">Enviar</button>
     </div>
-
   </div>
   <div class="text-center">
     <v-dialog v-model="dialog">
@@ -66,7 +67,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    
   </div>
 </template>
 
@@ -91,6 +91,13 @@ export default {
       food: 3,
       price: 3,
     });
+
+    const maxCaracter = 50;
+    const rulesMsg = [
+      (value) =>
+        value.length <= 50 || "El msj no puede exceder los 50 caracteres",
+    ];
+
     const cerrar = () => {
       if (register.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
@@ -108,7 +115,7 @@ export default {
 
     const userCalification = async () => {
       const dataComment = {
-        user: usuario.value.username.id,
+        user: usuario.value.id,
         comment: userData.value.message,
         attention: userData.value.atention,
         place: userData.value.place,
@@ -118,7 +125,8 @@ export default {
       try {
         const data = await getAPI.post("/api/opinions/", dataComment);
         if (data.status === 200) {
-          message.value = "¡Gracias por dejarnos tus comentario! ¡Nos ayuda a mejorar cada día!";
+          message.value =
+            "¡Gracias por dejarnos tus comentario! ¡Nos ayuda a mejorar cada día!";
           dialog.value = true;
           register.value = true;
         } else if (data.status != 200) {
@@ -127,7 +135,8 @@ export default {
         }
       } catch (error) {
         dialog.value = true;
-        message.value = "Ocurrio un error inesperado, vuelva a intentarlo mas tarde, disculpe las molestias ocasionadas";
+        message.value =
+          "Ocurrio un error inesperado, vuelva a intentarlo mas tarde, disculpe las molestias ocasionadas";
         /*error.response.status forma de leer los errores*/
       }
     };
@@ -137,7 +146,9 @@ export default {
       userData,
       message,
       dialog,
-      usuario
+      usuario,
+      rulesMsg,
+      maxCaracter,
     };
   },
 };
