@@ -1,6 +1,6 @@
 <template>
   <div class="reserva__container">
-    <!-- Captura de datos -->
+    <!-- Captura de datos (img - encabezado - guia - fecha - hora - mesas)-->
     <div class="container__reserva__data">
       <div class="reserva__img__text">
         <img
@@ -17,17 +17,23 @@
         </p>
       </div>
       <div class="reserva__selection">
-        <p class="reserva__selection__title">Sleccione una fecha</p>
+        <h4 class="reserva__selection__title">
+          INSTRUCCIONES PARA RESERVAR UNA MESA
+        </h4>
+        <p>PASO N°1: SELECCIONE UNA FECHA</p>
+        <p>PASO N°2: SELECCIONE UN HORARIO</p>
+        <p>PASO N°3: PRESIONE EL BOTON "Buscar"</p>
+        <h4 class="reserva__selection__title">Sleccione una fecha 📅</h4>
 
         <v-text-field
           type="date"
           variant="outlined"
           v-model="reservaUser.fecha"
-          hide-details="false"
           :min="fechaMinima"
+          :max="fechaMaxima"
         />
 
-        <p class="reserva_horario_title">Seleccione un horario</p>
+        <h4 class="reserva__selection__title">Seleccione un horario 🕰️</h4>
         <v-select
           :items="items"
           label="Horarios"
@@ -47,23 +53,56 @@
         <button class="reserva_libre" disabled>Libre</button>
       </div>
       <div class="reserva__selection__mesas">
-        <p class="reserva_mesas_title">Seleccione las mesas</p>
-        <v-row class="reserva__selection__table">
-          <v-col cols="3" v-for="number in 20" v-bind:key="number">
-            <v-btn
-              class="selection__table"
-              style="color: black"
-              :color="reservaUser.mesas.includes(number) ? 'blue' : 'white'"
-              @click="addTable(number)"
-              >{{ number }}</v-btn
-            >
-          </v-col>
-        </v-row>
+        <h4 class="reserva__selection__title">Seleccione la/s mesas</h4>
+        <div class="reserva__selection__locked" v-if="lock">
+          <v-row class="reserva__selection__table">
+            <v-col cols="3" v-for="number in 20" v-bind:key="number">
+              <v-btn
+                :disabled="!reservas.includes(number.toString())"
+                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"
+                @click="addTable(number)"
+                >{{ number }}</v-btn
+              >
+            </v-col>
+          </v-row>
+        </div>
+        <div class="reserva__selection__free" v-else>
+          <v-row class="reserva__selection__table">
+            <v-col cols="3" v-for="number in 20" v-bind:key="number">
+              <v-btn
+                :disabled="reservas.includes(number.toString())"
+                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"
+                @click="addTable(number)"
+                >{{ number }}</v-btn
+              >
+            </v-col>
+          </v-row>
+        </div>
       </div>
     </div>
-    <!-- Formulario del usuario -->
+    <!-- Formulario del usuario (medios de pago - horario - form)-->
     <div class="container__reserva__form">
-      <h2>Confirmación de Reserva</h2>
+      <div class="reserva__form__pagos">
+        <h2 style="margin: 20px auto">Medios de Pago 🪙</h2>
+        <img
+          :src="require('@/assets/Img/medios-de-pago.png')"
+          alt="medios-de-pago"
+          style="
+            border: 3px solid gold;
+            border-radius: 10px;
+            max-width: 90%;
+            margin: 0 auto;
+          "
+        />
+      </div>
+      <div class="reserva__form__horarios">
+        <h2 style="margin-top: 30px">Horarios de Atención</h2>
+        <p>Desayuno: 08:00hs a 11:00hs</p>
+        <p>Almuerzo: 11:30hs a 14:30hs</p>
+        <p>Merienda: 16:30hs a 19:00hs</p>
+        <p>Cena: 20:30hs a 00:00hs</p>
+        <h2 style="margin-top: 40px">Confirmación de Reserva</h2>
+      </div>
       <form class="reserva__form__data" @submit.prevent="makeReservation">
         <v-text-field
           variant="outlined"
@@ -127,9 +166,11 @@ export default {
     const reservado = ref(true);
     const form = ref(null);
     const dialog = ref(false);
-    const message = ref("");
+    const message = ref([]);
     const reservas = ref([]);
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
+    const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
+
     const user = computed(() => store.getters["getUsuario"]);
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
     const reservaUser = ref({
@@ -139,7 +180,12 @@ export default {
       user_id: "",
       tel: "",
     });
-
+    const lock = computed(() => {
+      if (reservaUser.value.horario === "") {
+        return true;
+      } else return false;      
+    });
+    /* Verifico si existe un usuario logeado, sino te redirige al login */
     const verificarUsuario = () => {
       if (!user.value) {
         router.push("/login");
@@ -191,16 +237,25 @@ export default {
       dialog.value = false;
     };
     /* Cargo todas las reservas filtradas por dia y horario */
-    /* const allReserved = async () => {
-      const dataFilter = {
-        date: reservaUser.value.fecha,
-        schedule: reservaUser.value.horario,
-      }
-      const { data } = await getAPI.get("/api/getReservation", dataFilter);//pasar dia y horario para filtrar
-      reservas.value = data;
-    };
-    allReserved(); */
+    const allReserved = async () => {
+      //pasar dia y horario para filtrar
+      reservas.value = [];
+      const data = await getAPI.get("/api/getReservation/", {
+        params: {
+          date: reservaUser.value.fecha,
+          schedule: reservaUser.value.horario,
+        },
+      });
 
+      data.data.forEach((reserva) => {
+        reservas.value.push(...reserva.selected_tables.split(","));
+      });
+    };
+    const find = () => {
+      allReserved();
+    };
+
+    /* Metodo para realizar una reserva si todo está bien */
     const makeReservation = async () => {
       const dataUser = {
         user_id: user.value.id,
@@ -230,6 +285,7 @@ export default {
     };
 
     return {
+      find,
       cerrar,
       makeReservation,
       addTable,
@@ -242,6 +298,9 @@ export default {
       message,
       user,
       reservas,
+      fechaMinima,
+      fechaMaxima,
+      lock
     };
   },
 };

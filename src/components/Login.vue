@@ -102,7 +102,6 @@ export default {
         if (result) {
           const data = await getAPI.post("/api/login/", dataUser);
           if (data.status === 200) {
-            console.log(data);
             message.value = "¡Usuario logeado con éxito!";
             dialog.value = true;
             logged.value = true;

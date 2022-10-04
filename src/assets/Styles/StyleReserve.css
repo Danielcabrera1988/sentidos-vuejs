@@ -13,10 +13,12 @@
   text-align: center;
 }
 .reserva__img__text p {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   text-align: justify;
   margin-bottom: 30px;
+  font-weight: 600;
+  font-style: oblique;
 }
 .reserva__img__logo {
   width: 100%;
@@ -24,19 +26,22 @@
 }
 .reserva__selection {
   width: 90%;
-  max-width: 300px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
-  text-align: center;
+}
+.reserva__selection p{
+  font-weight: 500;
+  text-align: left;
+  margin-left: 10px;
 }
 .reserva__selection__title{
-  font-weight: 500;
-}
-.reserva_horario_title{
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 18px;
   margin: 20px auto;
 }
 .reserva_selection_show {
+  /* botones reervado y libre */
   width: 90%;
   height: 100%;
   margin: 40px auto 10px auto;
@@ -59,21 +64,40 @@
   background-color: whitesmoke;
   color: black;
 }
-.reserva__selection__title {
-  margin: 20px auto;
-}
 .reserva__selection__table {
   width: 90%;
   max-width: 400px;
   text-align: center;
   margin: 20px auto;
 }
+.reserva_mesas_title{
+  margin: 20px auto;
+  font-weight: 500;
+}
 .container__reserva__form {
-  width: 100%;
-  margin-bottom: 20px;
+  width: 90%;
+  height: 100%;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+.reserva__form__pagos{
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+.reserva__form__horarios{
+  width: 90%;
+  height: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.reserva__form__horarios p{
+  text-align: left;
+  margin-left: 45px;
+  font-weight: 500;
+  padding: 5px 0;
 }
 .reserva__form__data {
   width: 60%;
@@ -81,16 +105,15 @@
   flex-direction: column;
   margin: 0 auto;
 }
-.container__reserva__form h2 {
-  margin: 5px auto 15px auto;
-}
 .form__btn {
   width: 120px;
   height: 40px;
-  margin: 20px auto 0 auto;
+  margin: 40px auto 0 auto;
   position: relative;
   z-index: 1;
   font-weight: 700;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
 }
 .form__btn::before{
   content: "";
@@ -106,18 +129,14 @@
   transition: clip-path 1.5s;
 }
 .form__btn:hover::before{
-  clip-path: circle(70.7% at 50% 50%);
+  clip-path: circle(69% at 50% 50%);
 }
 
 @media (min-width: 800px) {
   .reserva__container {
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: rgb(0, 0, 0);
-    position: relative;
   }
   .container__reserva__data {
     width: 50%;
@@ -126,49 +145,18 @@
     flex-direction: column;
     align-items: center;
   }
-  .reserva__img {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .reserva__img__text p{
+    width: 70%;
   }
   .reserva__img__logo {
     width: 50%;
     max-width: 300px;
   }
   .reserva__selection {
-    width: 90%;
-    max-width: 300px;
-    top: 180px;
-    text-align: center;
-  }
-  .reserva_selection_show {
-    width: 90%;
-    height: 100%;
-    margin: 40px auto 10px auto;
-    align-items: center;
-    text-align: center;
-  }
-  .reserva__selection__table {
-    width: 90%;
     max-width: 450px;
-    display: flex;
-    text-align: center;
   }
   .container__reserva__form {
     width: 50%;
     max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  .reserva__form__data {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-  .container__reserva__form h2 {
-    margin: 5px auto 15px auto;
   }
 }

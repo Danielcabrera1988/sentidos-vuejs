@@ -28,6 +28,8 @@
   position: relative;
   z-index: 1;
   font-weight: 700;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
 }
 .form__btn::before{
   content: "";
@@ -43,7 +45,7 @@
   transition: clip-path 1.5s;
 }
 .form__btn:hover::before{
-  clip-path: circle(70.7% at 50% 50%);
+  clip-path: circle(69% at 50% 50%);
 }
 .user__container h3 {
   font-family: "Bluetea";
