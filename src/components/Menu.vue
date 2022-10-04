@@ -6,7 +6,7 @@
         :src="require('../assets/Img/banner-menu.jpg')"
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
-      <h2 class="header__title">Download The Menu</h2>
+      <h2 class="header__title animate__animated animate__lightSpeedInLeft" style="color: gold">Download The Menu</h2>
 
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros

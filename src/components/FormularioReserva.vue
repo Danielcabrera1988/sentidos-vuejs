@@ -54,15 +54,10 @@
       </div>
       <div class="reserva__selection__mesas">
         <h4 class="reserva__selection__title">Seleccione la/s mesas</h4>
-        <div class="reserva__selection__locked" v-if="lock">
+        <div class="reserva__selection__locked" v-if="flagReserva">
           <v-row class="reserva__selection__table">
             <v-col cols="3" v-for="number in 20" v-bind:key="number">
-              <v-btn
-                :disabled="!reservas.includes(number.toString())"
-                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"
-                @click="addTable(number)"
-                >{{ number }}</v-btn
-              >
+              <v-btn disabled>{{ number }}</v-btn>
             </v-col>
           </v-row>
         </div>
@@ -168,6 +163,7 @@ export default {
     const dialog = ref(false);
     const message = ref([]);
     const reservas = ref([]);
+    const flagReserva = ref(true);
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
 
@@ -180,10 +176,10 @@ export default {
       user_id: "",
       tel: "",
     });
+
+    /* magia para nahuel xD */
     const lock = computed(() => {
-      if (reservaUser.value.horario === "") {
-        return true;
-      } else return false;      
+       return flagReserva;
     });
     /* Verifico si existe un usuario logeado, sino te redirige al login */
     const verificarUsuario = () => {
@@ -192,8 +188,10 @@ export default {
       }
     };
     verificarUsuario();
+
+    /* metodo para agregar mesas al arreglo de mesas del usuario */
     const addTable = (idMesa) => {
-      /* agregacion de mesas y eliminacion si toca 2 veces la misma mesa */
+      /* agrega y elimina mesas, si toca 2 veces la misma mesa la elimina*/
       if (reservaUser.value.mesas.includes(idMesa)) {
         reservaUser.value.mesas = reservaUser.value.mesas.filter(
           (item) => item != idMesa
@@ -228,6 +226,7 @@ export default {
     });
 
     const v$ = useVuelidate(rules, reservaUser);
+
     /* metodo para cerrar el diagolo de exito o error, de comunicación con el usuario */
     const cerrar = () => {
       if (register.value) {
@@ -236,9 +235,11 @@ export default {
       }
       dialog.value = false;
     };
+
     /* Cargo todas las reservas filtradas por dia y horario */
     const allReserved = async () => {
       //pasar dia y horario para filtrar
+      
       reservas.value = [];
       const data = await getAPI.get("/api/getReservation/", {
         params: {
@@ -250,6 +251,7 @@ export default {
       data.data.forEach((reserva) => {
         reservas.value.push(...reserva.selected_tables.split(","));
       });
+      flagReserva.value = false;
     };
     const find = () => {
       allReserved();
@@ -300,7 +302,8 @@ export default {
       reservas,
       fechaMinima,
       fechaMaxima,
-      lock
+      lock,
+      flagReserva
     };
   },
 };

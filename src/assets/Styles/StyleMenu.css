@@ -94,12 +94,12 @@
 @media (min-width: 1024px) {
   
   .header__title {
-    margin-top: 5%;
-    font-size: 34px;
+    margin-top: 8%;
+    font-size: 44px;
   }
   .qr_img {
-    max-width: 450px;
-    margin: 12% auto 0 auto;
+    max-width: 550px;
+    margin: 16% auto 0 auto;
   }
   .header__description {
     font-size: 18px;
