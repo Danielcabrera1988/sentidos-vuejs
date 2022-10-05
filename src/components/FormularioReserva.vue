@@ -66,7 +66,7 @@
             <v-col cols="3" v-for="number in 20" v-bind:key="number">
               <v-btn
                 :disabled="reservas.includes(number.toString())"
-                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"
+                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"                
                 @click="addTable(number)"
                 >{{ number }}</v-btn
               >
@@ -169,7 +169,7 @@ export default {
     const user = computed(() => store.getters["getUsuario"]);
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
     const reservaUser = ref({
-      id: user.value.id,
+      id: "",
       tel: "",
       fecha: fechaMinima,
       mesas: [],
@@ -255,7 +255,7 @@ export default {
     /* Metodo para realizar una reserva si todo está bien */
     const makeReservation = async () => {
       const dataUser = {
-        user_id: reservaUser.value.id,
+        user_id: user.value.id,
         phone: reservaUser.value.tel,
         schedule: reservaUser.value.horario,
         date: reservaUser.value.fecha,

@@ -155,5 +155,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/Styles/StyleComentario.css";
+@import "../assets/Styles/StyleCalification.css";
 </style>

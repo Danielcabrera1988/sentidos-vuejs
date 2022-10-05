@@ -1,6 +1,9 @@
 .comment__main {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .comment__main h3 {
   margin: 20px;
@@ -130,9 +133,6 @@ textarea {
 }
 @media (min-width: 1024px) {
   .comment__main {
-    width: 100%;
-    height: 100%;
-    display: flex;
     flex-direction: row;
   }
   .comment__main h3 {

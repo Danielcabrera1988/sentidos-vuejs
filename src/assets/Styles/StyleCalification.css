@@ -45,7 +45,7 @@ textarea {
   margin: 10px auto;
 }
 .comment__btn__action {
-  width: 50%;
+  width: 90%;
   max-width: 400px;
   display: flex;
   flex-direction: row;
