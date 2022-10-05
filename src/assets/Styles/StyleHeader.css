@@ -55,39 +55,38 @@
   flex-direction: column;
   align-items: center;
 }
-.home__about p{
+.home__about p {
   font-size: 14px;
 }
-.home__integrantes{
+.home__integrantes {
   width: 90%;
-  max-width: 1024px;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.home__integrantes__history{
+.home__integrantes__history {
   display: flex;
-  max-width: 450px;
+  /* max-width: 450px; */
   flex-direction: column;
   border: 2px solid goldenrod;
   border-radius: 0 20px;
   margin: 20px auto;
   padding: 5px;
 }
-.home__integrantes__history h3{
+.home__integrantes__history h3 {
   font-size: 20px;
   margin-left: 5px;
 }
-.home__integrantes__history p{
+.home__integrantes__history p {
   font-weight: 500;
   font-size: 14px;
   text-align: justify;
   font-style: oblique;
   margin: 5px 5px;
 }
-.home__integrantes__history img{
+.home__integrantes__history img {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   height: 100%;
   border: 1px solid transparent;
   border-radius: 0 20px;

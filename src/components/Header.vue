@@ -8,7 +8,9 @@
           sentimientos, varían en cada persona. Las recetas no son de quien las
           cuenta, sino de quien las hace, porque cada cual pone su sello
           personal e intransferible. Si una receta fuese una fórmula exacta,
-          todo sabría de la misma forma y, afortunadamente, esto no es así."
+          todo sabría de la misma forma y, afortunadamente, esto no es así. Asi
+          que te invitamos al mejor restaurante de la zona, para que disfrutes
+          de los mejores menues tanto para un té como para una cena romantica"
         </p>
       </div>
       <div class="home__body">
@@ -22,6 +24,8 @@
             </v-carousel-item>
           </v-carousel>
         </div>
+      </div>
+      <div class="home__integrantes">
         <div class="home__about">
           <h2>¿Quienes somos?</h2>
           <p>
@@ -34,23 +38,23 @@
             que conocemos a la perfección el gusto de nuestros clientes.
           </p>
         </div>
-      </div>
-      <div class="home__integrantes">
-        <v-row>
-          <v-col
-            cols="12"
-            sm="6"
-            lg="6"
-            v-for="integrante in integrantes"
-            :key="integrante.id"
-          >
-            <div class="home__integrantes__history">
-              <h3>{{ integrante.name }}</h3>
-              <p>{{ integrante.history }}</p>
-              <img :src="integrante.img" />
-            </div>
-          </v-col>
-        </v-row>
+        <div class="home__about__information">
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+              lg="6"
+              v-for="integrante in integrantes"
+              :key="integrante.id"
+            >
+              <div class="home__integrantes__history">
+                <h3>{{ integrante.name }}</h3>
+                <p>{{ integrante.history }}</p>
+                <img :src="integrante.img" />
+              </div>
+            </v-col>
+          </v-row>
+        </div>
       </div>
     </div>
   </div>
@@ -65,14 +69,14 @@ export default defineComponent({
         id: 1,
         name: "Peter Gilmore",
         history:
-          "Es un reconocido cocinero Argentino que empezó formándose como repostero y acabó trabajando para grandes eventos nacionales. Escribió muchos libros de gastronomía que se convertirían en clásicos y se le conoce por ser el pionero de la alta cocina en Argentina, por tantas mezclas exitosas de sabores.",
+          "Es un reconocido Chef Argentino que empezó formándose como repostero y acabó trabajando para grandes eventos nacionales. Escribió muchos libros de gastronomía que se convertirían en clásicos y se le conoce por ser el pionero de la alta cocina en Argentina, por tantas mezclas exitosas de sabores.",
         img: require("@/assets/Img/peter.jpg"),
       },
       {
         id: 2,
-        name: "Amanda Lallop",
+        name: "Amanda Yallop",
         history:
-          "En 2012 fundamos Sentidos. Mientras cursaba la Lic. en Matemáticas, descubrí un mundo fascinante. Con enorme convicción, di un viraje radical en mis estudios, así egresé como Lic. en Marketing de la UNNE. Los siguientes años integré el team de gerentes de Sentidos.",
+          "Es co-fundadora de Sentidos. Mientras cursaba la Lic. en Matemáticas, descubrí un mundo totalmente diferente y fascinante ¡La Cocina!. Con enorme convicción, di un viraje radical en mis estudios, así egresé como Lic. en Marketing de la UNNE. Los siguientes años integré el team de gerentes de Sentidos.",
         img: require("@/assets/Img/amanda.jpg"),
       },
       {
@@ -87,7 +91,7 @@ export default defineComponent({
         name: "Robert Grey",
         history:
           "Acumula más de los 30 años en el rubro. Fue pasante, panadero, ayudante de cocina. Viajó por Europa y se capacitó en Brasil. A lo largo de toda su carrera, después de tanta experiencia, decidió abrir junto a sus amigos el famoso Restorant Sentidos que lo llevaría al éxito en la cocina Argentina, un clásico de Resistencia - Chaco, posicionado en el puesto n° 26 entre los mejores 50 de América Latina.",
-        img: require("@/assets/Img/robert.png"),
+        img: require("@/assets/Img/robert.jpg"),
       },
     ];
     const imagenes = [
