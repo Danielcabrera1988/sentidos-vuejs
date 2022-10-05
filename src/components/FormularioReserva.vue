@@ -166,18 +166,16 @@ export default {
     const flagReserva = ref(true);
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
-
     const user = computed(() => store.getters["getUsuario"]);
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
     const reservaUser = ref({
+      id: user.value.id,
+      tel: "",
       fecha: fechaMinima,
       mesas: [],
       horario: "",
-      user_id: "",
-      tel: "",
     });
 
-    
     /* Verifico si existe un usuario logeado, sino te redirige al login */
     const verificarUsuario = () => {
       if (!user.value) {
@@ -236,7 +234,6 @@ export default {
     /* Cargo todas las reservas filtradas por dia y horario */
     const allReserved = async () => {
       //pasar dia y horario para filtrar
-
       reservas.value = [];
       const data = await getAPI.get("/api/getReservation/", {
         params: {
@@ -250,6 +247,7 @@ export default {
       });
       flagReserva.value = false;
     };
+
     const find = () => {
       allReserved();
     };
@@ -257,7 +255,7 @@ export default {
     /* Metodo para realizar una reserva si todo está bien */
     const makeReservation = async () => {
       const dataUser = {
-        user_id: user.value.id,
+        user_id: reservaUser.value.id,
         phone: reservaUser.value.tel,
         schedule: reservaUser.value.horario,
         date: reservaUser.value.fecha,
@@ -273,7 +271,7 @@ export default {
             register.value = true;
           } else if (data.status != 200) {
             dialog.value = true;
-            message.value = "Ocurrio un error al intentar registrar el usuario";
+            message.value = "Ocurrio un error al intentar registrar su reserva";
           }
         }
       } catch (error) {
@@ -295,7 +293,6 @@ export default {
       reservado,
       dialog,
       message,
-      user,
       reservas,
       fechaMinima,
       fechaMaxima,

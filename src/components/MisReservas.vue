@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Mis Reservas - ESTAMOS TRABAJANDO EN ELLO</h1>
-    
   </div>
 </template>
 
@@ -10,7 +9,7 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   setup() {
-    const on = ref(true);
+    const drawer = ref(false);
     const items = [
       { title: "Click Me" },
       { title: "Click Me" },
@@ -20,7 +19,7 @@ export default defineComponent({
 
     return {
       items,
-      on
+      drawer,
     };
   },
 });

@@ -16,12 +16,16 @@
   height: 100%;
 }
 .nav__links ul{
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: flex;
+  text-align: center;
+  align-items: center;
 }
 .nav__links li{
   list-style: none;
+  color: whitesmoke;
+  cursor: pointer;
 }
 .nav__links li a {
   display: block;
@@ -30,6 +34,9 @@
   padding: 1rem;
 }
 .nav__links a:hover{
+  color: var(--color-three);
+}
+.nav__links li:hover{
   color: var(--color-three);
 }
 .router-link-exact-active{

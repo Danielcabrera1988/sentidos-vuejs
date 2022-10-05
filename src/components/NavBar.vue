@@ -30,9 +30,42 @@
         <li v-if="!user">
           <router-link to="/singin">Sing in</router-link>
         </li>
-        <li v-if="user">
-          <router-link to="/misreservas">{{ user.username }}</router-link
-          ><!-- falta la vista del usuario -->
+        <li v-if="user" @click="show" class="mdi mdi-view-list">
+          {{ user.username }}
+          <v-navigation-drawer
+            v-model="drawer"
+            location="right"
+            style="background-color: #2f3640"
+          >
+            <v-list-item
+              prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+              :title="user.username"
+              color="white"
+            ></v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list density="compact" nav>
+              <v-list-item
+                prepend-icon="mdi-view-dashboard"
+                to="/misreservas"
+                title="Mis Reservas"
+                color="goldenrod"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-star"
+                to="/calification"
+                title="Califícanos"
+                color="goldenrod"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-comment-account"
+                to="/contacto"
+                title="Contacto Directo"
+                color="goldenrod"
+              ></v-list-item>
+            </v-list>
+          </v-navigation-drawer>
         </li>
         <li
           class="nav__close"
@@ -52,17 +85,21 @@ import { defineComponent, ref, computed } from "vue";
 import { useStore } from "vuex";
 export default defineComponent({
   setup() {
+    const drawer = ref(false);
     const store = useStore();
     //la función computed esta constantemente analizando si hay cambios par aactualizarlos
     const user = computed(() => store.getters["getUsuario"]);
-
+    const show = () => {
+      drawer.value = !drawer.value;
+    };
     const verificarLocalStorage = () => {
       if (localStorage.getItem("usuario")) {
-        store.commit("SET_USUARIO", JSON.parse(localStorage.getItem("usuario")),
+        store.commit(
+          "SET_USUARIO",
+          JSON.parse(localStorage.getItem("usuario"))
         );
       }
     };
-
     verificarLocalStorage();
 
     const active = ref(false);
@@ -77,8 +114,10 @@ export default defineComponent({
     return {
       active,
       user,
+      drawer,
       toggleBtn,
       cerrarSesion,
+      show,
     };
   },
 });
@@ -87,4 +126,3 @@ export default defineComponent({
 <style scoped>
 @import "../assets/Styles/StyleNav.css";
 </style>
-s

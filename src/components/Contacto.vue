@@ -8,7 +8,8 @@
           name="msg"
           label="Dejanos tu mensaje"
           v-model="formUser.message"
-          hide-details="false"
+          :rules="rulesMsg"
+          :counter="maxCaracter"
         ></v-textarea>
         <span
           style="color: red"
@@ -109,6 +110,12 @@ export default {
       telefono: "",
     });
 
+    const maxCaracter = 50;
+    const rulesMsg = [
+      (value) =>
+        value.length <= 50 || "El msj no puede exceder los 50 caracteres",
+    ];
+
     const cerrar = () => {
       if (register.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
@@ -130,7 +137,7 @@ export default {
         },
         message: {
           required: helpers.withMessage(
-            "Es obligatorio enviar un mensaje",
+            "Este campo es obligatorio",
             required
           ),
           maxLength: helpers.withMessage(
@@ -179,6 +186,8 @@ export default {
     };
     return {
       formUser,
+      maxCaracter,
+      rulesMsg,
       cerrar,
       sendContact,
       rules,

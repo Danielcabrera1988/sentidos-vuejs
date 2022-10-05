@@ -1,19 +1,20 @@
 .comment__main {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 .comment__msg {
   width: 90%;
+  max-width: 400px;
   height: 100%;
   margin: 0 auto;
 }
-.comment__area{
-    width: 100%;
-    height: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+.comment__area {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 }
 .comment__msg h3 {
   margin: 5% auto;
@@ -26,23 +27,25 @@ textarea {
 .comment__calification {
   width: 90%;
   max-width: 400px;
-  margin: 1% auto;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  border: 3px solid goldenrod;
+  border-radius: 10px;
 }
 .calification {
-  width: 100%;
+  width: 90%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .comment__btn__action {
-  width: 90%;
+  width: 50%;
   max-width: 400px;
   display: flex;
   flex-direction: row;
@@ -50,7 +53,7 @@ textarea {
   margin: 5% auto;
   font-weight: 700;
 }
-.btn__effect{
+.btn__effect {
   width: 120px;
   height: 40px;
   margin: 5px auto 5px auto;
@@ -60,7 +63,7 @@ textarea {
   border: 1px solid goldenrod;
   border-radius: 5px;
 }
-.btn__effect::before{
+.btn__effect::before {
   content: "";
   display: block;
   width: 100%;
@@ -73,6 +76,6 @@ textarea {
   clip-path: var(--clip);
   transition: clip-path 1.5s;
 }
-.btn__effect:hover::before{
+.btn__effect:hover::before {
   clip-path: circle(69% at 50% 50%);
 }
