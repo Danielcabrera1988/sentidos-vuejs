@@ -115,14 +115,6 @@ export default defineComponent({
     };
     myReservation();
 
-    const imagenes = [
-      require("@/assets/Img/entrada.jpg"),
-      require("@/assets/Img/living-central.jpg"),
-      require("@/assets/Img/c3b.jpg"),
-      require("@/assets/Img/c4b.jpg"),
-    ];
-    const model = ref(0); //ref se utiliza para cuando tenemos variables reactivas, hay que importar de vue
-
     const cerrar = () => {
       if (user.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
