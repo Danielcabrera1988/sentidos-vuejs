@@ -125,8 +125,6 @@ export default defineComponent({
     };
 
     return {
-      imagenes,
-      model,
       dialog,
       message,
       reservas,
