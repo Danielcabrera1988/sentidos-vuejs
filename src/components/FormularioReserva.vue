@@ -66,7 +66,7 @@
             <v-col cols="3" v-for="number in 20" v-bind:key="number">
               <v-btn
                 :disabled="reservas.includes(number.toString())"
-                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"                
+                :color="reservas.includes(number.toString()) ? 'blue' : 'white'"
                 @click="addTable(number)"
                 >{{ number }}</v-btn
               >
@@ -147,25 +147,25 @@
 
 <script>
 import { ref, computed } from "vue";
-import { useStore } from "vuex";
 import moment from "moment";
+import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { getAPI } from "../Ax-Api";
 import useVuelidate from "@vuelidate/core";
 import { required, helpers, numeric } from "@vuelidate/validators";
 export default {
   setup() {
-    const store = useStore();
     const router = useRouter();
     const register = ref(false);
     const reservado = ref(true);
     const form = ref(null);
     const dialog = ref(false);
-    const message = ref([]);
+    const message = ref("");
     const reservas = ref([]);
     const flagReserva = ref(true);
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
+    const store = useStore();
     const user = computed(() => store.getters["getUsuario"]);
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
     const reservaUser = ref({
@@ -241,7 +241,7 @@ export default {
           schedule: reservaUser.value.horario,
         },
       });
-
+      console.log(data.data)
       data.data.forEach((reserva) => {
         reservas.value.push(...reserva.selected_tables.split(","));
       });
@@ -269,6 +269,7 @@ export default {
             message.value = "¡Reserva realizada correctamente!";
             dialog.value = true;
             register.value = true;
+            console.log(data);
           } else if (data.status != 200) {
             dialog.value = true;
             message.value = "Ocurrio un error al intentar registrar su reserva";
