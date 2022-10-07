@@ -11,7 +11,7 @@
           v-model="formUser.user"
           label="Usuario"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.user.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -25,12 +25,12 @@
           v-model="formUser.password"
           label="Password"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.password.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
-        <br/>
+        <br />
         <button class="form__btn">Login</button>
       </form>
     </div>
@@ -73,7 +73,7 @@ export default {
 
     const cerrar = () => {
       if (logged.value) {
-        //con router redirigimos al usuario logrado hascia la ruta que le indiquemos si todo está ben
+        //con router redirigimos al usuario logrado hascia la ruta que le indiquemos si todo está bien
         router.push("/");
       }
       dialog.value = false;
@@ -102,11 +102,11 @@ export default {
         if (result) {
           const data = await getAPI.post("/api/login/", dataUser);
           if (data.status === 200) {
+            store.commit("SET_USUARIO", data.data.user);
+            localStorage.setItem("usuario", JSON.stringify(data.data.user));
             message.value = "¡Usuario logeado con éxito!";
             dialog.value = true;
             logged.value = true;
-            store.commit("SET_USUARIO", dataUser);
-            localStorage.setItem("usuario", JSON.stringify(data.data.user));
           }
         }
       } catch (error) {

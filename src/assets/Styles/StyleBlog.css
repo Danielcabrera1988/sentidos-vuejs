@@ -54,7 +54,7 @@
 }
 .calification__container {
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -63,8 +63,7 @@
 .calification {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
@@ -95,8 +94,7 @@
 }
 
 @media (min-width: 768px) {
-  
-  .blog__comments__container {    
+  .blog__comments__container {
     max-width: 700px;
     font-size: 16px;
   }
@@ -107,7 +105,8 @@
     max-width: 450px;
   }
   .calification {
-    max-width: 420px;
+    flex-direction: row;
+    justify-content: space-between;
   }
   .articles__container {
     font-size: 20px;
@@ -115,7 +114,6 @@
 }
 
 @media (min-width: 1024px) {
-
   .main__comment__points {
     margin: 2% auto;
     flex-direction: row;

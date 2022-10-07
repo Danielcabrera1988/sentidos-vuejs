@@ -36,6 +36,7 @@
             v-model="drawer"
             location="right"
             style="background-color: #2f3640"
+            :temporary="true"
           >
             <v-list-item
               prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
@@ -94,9 +95,7 @@ export default defineComponent({
     };
     const verificarLocalStorage = () => {
       if (localStorage.getItem("usuario")) {
-        store.commit(
-          "SET_USUARIO",
-          JSON.parse(localStorage.getItem("usuario"))
+        store.commit("SET_USUARIO", JSON.parse(localStorage.getItem("usuario"))
         );
       }
     };
