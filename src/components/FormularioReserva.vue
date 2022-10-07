@@ -48,10 +48,12 @@
         >
         <button class="form__btn" @click="find">Buscar</button>
       </div>
+      <!-- Botones de Reservado y Libre -->
       <div class="reserva_selection_show">
         <button class="reserva_selected" disabled>Reservado</button>
         <button class="reserva_libre" disabled>Libre</button>
       </div>
+      <!-- Cuadricula de selección de mesas -->
       <div class="reserva__selection__mesas">
         <h4 class="reserva__selection__title">Seleccione la/s mesas</h4>
         <div class="reserva__selection__locked" v-if="flagReserva">
@@ -103,8 +105,9 @@
           variant="outlined"
           v-model="reservaUser.tel"
           label="Teléfono"
-          hide-details="false"
           class="ma-3"
+          :counter="maxTel"
+          :rules="phoneRules"
         /><span
           style="color: red"
           v-for="error in v$.tel.$errors"
@@ -152,12 +155,12 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { getAPI } from "../Ax-Api";
 import useVuelidate from "@vuelidate/core";
-import { required, helpers, numeric } from "@vuelidate/validators";
+import { required, helpers, numeric, maxLength } from "@vuelidate/validators";
 export default {
   setup() {
+    const store = useStore();
+    const user = computed(() => store.getters["getUsuario"]);
     const router = useRouter();
-    const register = ref(false);
-    const reservado = ref(true);
     const form = ref(null);
     const dialog = ref(false);
     const message = ref("");
@@ -165,9 +168,11 @@ export default {
     const flagReserva = ref(true);
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
-    const store = useStore();
-    const user = computed(() => store.getters["getUsuario"]);
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
+    const maxTel = ref(12);
+    const phoneRules = [
+      (value) => value.length <= 12 || "No puede exceder los 12 caracteres",
+    ];
     const reservaUser = ref({
       id: "",
       tel: "",
@@ -215,7 +220,11 @@ export default {
             "Debe introducir su número de teléfono ",
             required
           ),
-          numeric: helpers.withMessage("Sólo números", numeric),
+          numeric: helpers.withMessage("Solo números", numeric),
+          maxLength: helpers.withMessage(
+            "No se permiten las de 12 dígitos",
+            maxLength
+          ),
         },
       };
     });
@@ -224,9 +233,9 @@ export default {
 
     /* metodo para cerrar el diagolo de exito o error, de comunicación con el usuario */
     const cerrar = () => {
-      if (register.value) {
+      if (user.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
-        router.push("/");
+        router.push("/misreservas");
       }
       dialog.value = false;
     };
@@ -241,13 +250,13 @@ export default {
           schedule: reservaUser.value.horario,
         },
       });
-      console.log(data.data)
       data.data.forEach((reserva) => {
         reservas.value.push(...reserva.selected_tables.split(","));
       });
       flagReserva.value = false;
     };
 
+    /* LLama a la función de AllReserved cuando se llenan los parametros */
     const find = () => {
       allReserved();
     };
@@ -268,8 +277,6 @@ export default {
           if (data.status === 200) {
             message.value = "¡Reserva realizada correctamente!";
             dialog.value = true;
-            register.value = true;
-            console.log(data);
           } else if (data.status != 200) {
             dialog.value = true;
             message.value = "Ocurrio un error al intentar registrar su reserva";
@@ -291,13 +298,14 @@ export default {
       items,
       form,
       reservaUser,
-      reservado,
       dialog,
       message,
       reservas,
       fechaMinima,
       fechaMaxima,
       flagReserva,
+      maxTel,
+      phoneRules,
     };
   },
 };

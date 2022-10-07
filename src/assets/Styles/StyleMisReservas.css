@@ -6,12 +6,14 @@
 }
 .container__reservas h2{
     text-align: center;
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
+    font-size: 28px;
+    text-shadow: 2px 4px 6px black;
+    color: whitesmoke;
 }
 .container__reservas__data{
     width: 90%;
-    height: 100%;
-    border: 1px solid transparent;
+    border: 1px solid goldenrod;
     border-radius: 10px;
     margin: 20px auto;
 }
