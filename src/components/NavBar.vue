@@ -109,6 +109,7 @@ export default defineComponent({
       //commit se usa para llamar a las mutaciones dentro del store
       store.commit("SET_USUARIO", null);
       localStorage.removeItem("usuario");
+      window.location.reload();
     };
     return {
       active,
