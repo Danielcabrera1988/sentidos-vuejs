@@ -82,7 +82,7 @@ export default {
     const dialog = ref(false);
     const message = ref("");
     const register = ref(false);
-    const usuario = computed(() => store.getters["getUsuario"]);
+    const user = computed(() => store.getters["getUsuario"]);
     const userData = ref({
       user: "",
       message: "",
@@ -107,7 +107,7 @@ export default {
     };
 
     const verificarUsuario = () => {
-      if (!usuario.value) {
+      if (!user.value) {
         router.push("/login");
       }
     };
@@ -115,7 +115,7 @@ export default {
 
     const userCalification = async () => {
       const dataComment = {
-        user: usuario.value.id,
+        user: user.value.id,
         comment: userData.value.message,
         attention: userData.value.atention,
         place: userData.value.place,
@@ -146,7 +146,7 @@ export default {
       userData,
       message,
       dialog,
-      usuario,
+      user,
       rulesMsg,
       maxCaracter,
     };

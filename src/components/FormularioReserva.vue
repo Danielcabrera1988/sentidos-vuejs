@@ -31,6 +31,7 @@
           v-model="reservaUser.fecha"
           :min="fechaMinima"
           :max="fechaMaxima"
+          @change="verificaFechaMinima"
         />
 
         <h4 class="reserva__selection__title">Seleccione un horario 🕰️</h4>
@@ -47,6 +48,8 @@
           >{{ error.$message }}</span
         >
         <button class="form__btn" @click="find">Buscar</button>
+        <p>{{ reservaUser.fecha }}</p>
+        <p>{{ fechaMinima }}</p>
       </div>
       <!-- Botones de Reservado y Libre -->
       <div class="reserva_selection_show">
@@ -129,8 +132,24 @@
           >{{ error.$message }}</span
         >
 
-        <button class="form__btn">Enviar</button>
+        <v-btn
+          style="width: 100px; margin: 20px auto"
+          :class="computedDate"
+          :disabled="deshabilitaBtn"
+          >Enviar</v-btn
+        >
       </form>
+      <div v-if="flagToPaid">
+        <p style="color: red; margin-top: 30px">
+          {{ msj }}
+        </p>
+        <v-btn
+          style="margin: 30px auto"
+          @click="pagado"
+          :disabled="pagadoBtn"
+          >{{ estado }}</v-btn
+        >
+      </div>
     </div>
     <!-- Mensajes para el usuario -->
     <div class="text-center">
@@ -158,6 +177,13 @@ import useVuelidate from "@vuelidate/core";
 import { required, helpers, numeric, maxLength } from "@vuelidate/validators";
 export default {
   setup() {
+    const pagadoBtn = ref(false);
+    const deshabilitaBtn = ref(true);
+    const flagToPaid = ref(true);
+    const estado = ref("Pagar");
+    const msj = ref(
+      "Si selecciona una fecha menor a 24hs deberá abonar la seña de la reserva para continuar"
+    );
     const store = useStore();
     const user = computed(() => store.getters["getUsuario"]);
     const router = useRouter();
@@ -181,6 +207,24 @@ export default {
       horario: "",
     });
 
+    const verificaFechaMinima = () => {
+      if (moment(reservaUser.value.fecha).isSame(fechaMinima)) {
+        deshabilitaBtn.value = true;
+        flagToPaid.value = true;
+      } else {
+        flagToPaid.value = false;
+        deshabilitaBtn.value = false;
+      }
+    };
+
+    const pagado = () => {
+      pagadoBtn.value = true;
+      deshabilitaBtn.value = false;
+      estado.value = "Pagado";
+      msj.value = "";
+      dialog.value = true;
+      message.value = "Gracias por abonar la reserva";
+    };
     /* Verifico si existe un usuario logeado, sino te redirige al login */
     const verificarUsuario = () => {
       if (!user.value) {
@@ -290,6 +334,13 @@ export default {
     };
 
     return {
+      pagadoBtn,
+      msj,
+      pagado,
+      flagToPaid,
+      estado,
+      deshabilitaBtn,
+      verificaFechaMinima,
       find,
       cerrar,
       makeReservation,

@@ -2,6 +2,7 @@
   <div class="container__reservas">
     <div class="container__reserva__info">
       <h2 class="animate__animated animate__zoomIn">Mis Reservas</h2>
+      <p>*Recuerde que posee de 48hs corridas desde su reserva para realizar el pago de la seña para confirmar su reserva, de lo contrario se cancelará automaticamente.*</p>
     </div>
     <div class="container__reservas__data">
       <v-table>

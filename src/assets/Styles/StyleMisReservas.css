@@ -1,19 +1,26 @@
-.container__reservas{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+.container__reservas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.container__reservas h2{
-    text-align: center;
-    margin: 20px auto 0 auto;
-    font-size: 28px;
-    text-shadow: 2px 4px 6px black;
-    color: whitesmoke;
+.container__reservas h2 {
+  text-align: center;
+  margin: 20px auto 0 auto;
+  font-size: 28px;
+  text-shadow: 2px 4px 6px black;
+  color: whitesmoke;
 }
-.container__reservas__data{
-    width: 90%;
-    border: 1px solid goldenrod;
-    border-radius: 10px;
-    margin: 20px auto;
+.container__reservas p {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px auto;
+  color: red;
+}
+.container__reservas__data {
+  width: 90%;
+  border: 1px solid goldenrod;
+  border-radius: 10px;
+  margin: 20px auto;
 }

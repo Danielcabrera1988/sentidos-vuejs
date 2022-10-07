@@ -90,12 +90,15 @@ export default defineComponent({
     const store = useStore();
     //la función computed esta constantemente analizando si hay cambios par aactualizarlos
     const user = computed(() => store.getters["getUsuario"]);
+    const token = computed(() => store.getters["getToken"]);
     const show = () => {
       drawer.value = !drawer.value;
     };
     const verificarLocalStorage = () => {
       if (localStorage.getItem("usuario")) {
-        store.commit("SET_USUARIO", JSON.parse(localStorage.getItem("usuario"))
+        store.commit(
+          "SET_USUARIO",
+          JSON.parse(localStorage.getItem("usuario"))
         );
       }
     };
@@ -106,14 +109,16 @@ export default defineComponent({
       active.value = !active.value;
     };
     const cerrarSesion = () => {
-      //commit se usa para llamar a las mutaciones dentro del store
       store.commit("SET_USUARIO", null);
+      store.commit("SET_TOKEN", null);
       localStorage.removeItem("usuario");
+      localStorage.removeItem("token");
       window.location.reload();
     };
     return {
       active,
       user,
+      token,
       drawer,
       toggleBtn,
       cerrarSesion,
