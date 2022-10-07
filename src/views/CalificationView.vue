@@ -1,15 +1,15 @@
 <template>
     <div>
-        <Comentario/>
+        <Calification/>
     </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Comentario from '../components/Comentario.vue'
+import Calification from '../components/Calification.vue'
 
 export default defineComponent({
-    components: {Comentario},
+    components: {Calification},
     setup() {
         //
     },

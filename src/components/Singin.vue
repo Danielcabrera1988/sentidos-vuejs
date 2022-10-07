@@ -2,128 +2,223 @@
   <div class="user__container">
     <h1 class="animate__animated animate__zoomInDown">Nuevo Usuario</h1>
     <div class="user__container__form">
-      <v-form ref="form" @submit.prevent="login">
+      <form @submit.prevent="singIn" class="container__form">
         <v-text-field
+          class="ma-3"
           v-model="formUser.name"
           prepend-icon="mdi-account"
-          :counter="maxName"
-          :rules="nameRules"
           label="Nombre y Apellido"
-        ></v-text-field>
-
-         <v-text-field
-          v-model="formUser.username"
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.name.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
+        <v-text-field
+          class="ma-3"
+          v-model="formUser.dni"
           prepend-icon="mdi-account"
-          label="User name"
-        ></v-text-field>
+          type="number"
+          label="DNI"
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.dni.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
 
         <v-text-field
+          class="ma-3"
+          v-model="formUser.userName"
+          prepend-icon="mdi-account"
+          label="Usuario"
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.userName.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
+
+        <v-text-field
+          class="ma-3"
           v-model="formUser.email"
+          type="text"
           prepend-icon="mdi-email-outline"
-          :rules="emailRules"
           label="E-mail"
-        ></v-text-field>
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.email.$errors"
+          :key="error"
+          >{{ error.$message }}</span
+        >
 
         <v-text-field
+          class="ma-3"
           v-model="formUser.password"
           label="Password"
           prepend-icon="mdi-lock-outline"
           type="password"
-          :rules="passwordlRules"
-          :counter="minCaracter"
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.password.$errors"
+          :key="error"
+          >{{ error.$message }}</span
         >
-        </v-text-field>
 
         <v-text-field
-          v-model="formUser.password2"
+          class="ma-3"
+          v-model="formUser.confirmPassword"
           label="Verify Password"
           prepend-icon="mdi-lock-outline"
           type="password"
-          :rules="confirmPasswordRules"
-          :counter="minCaracter"
+          hide-details="false"
+        /><span
+          style="color: red;"
+          v-for="error in v$.confirmPassword.$errors"
+          :key="error"
+          >{{ error.$message }}</span
         >
-        </v-text-field>
-
+        <br/>
         <button class="form__btn">Enviar</button>
-      </v-form>
+      </form>
     </div>
     <h3>¡Gracias por formar parte de nosotros!</h3>
+    <!-- Mensajes para el usuario -->
+    <div class="text-center">
+      <v-dialog v-model="dialog">
+        <v-card>
+          <v-card-text>
+            {{ message }}
+          </v-card-text>
+          <v-card-actions>
+            <v-btn color="primary" block @click="cerrar">Cerrar</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </div>
   </div>
 </template>
 
-<script >
-import { ref } from "vue";
-import {getAPI} from "../Ax-Api";
+<script>
+import { ref, computed } from "vue";
+import useVuelidate from "@vuelidate/core";
+import { useRouter } from "vue-router";
+import { getAPI } from "../Ax-Api";
+import {
+  required,
+  email,
+  minLength,
+  sameAs,
+  helpers,
+  numeric,
+} from "@vuelidate/validators";
 export default {
   setup() {
-
-    const form = ref(null);
+    const router = useRouter();
+    const register = ref(false);
+    const dialog = ref(false);
+    const message = ref("");
     const formUser = ref({
       name: "",
-      username: "",
+      dni: "",
+      userName: "",
       email: "",
       password: "",
-      password2: "",
+      confirmPassword: "",
     });
-    const maxName = ref(10);
-    const minCaracter = ref(8);
-
-    const nameRules = [
-      (value) => !!value || "Nombre es requerido",
-      (value) => value.length <= 10 || "Nombre debe tener maximo 10 caracteres",
-    ];
-    const emailRules = [
-      (value) => !!value || "E-mail es requerido",
-      (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || "E-mail debe ser válido",
-    ];
-    const passwordlRules = [
-      (value) => !!value || "Contraseña es requerida",
-      (value) =>
-        value.length >= 8 || "La contraseña debe tener al menos 8 caracteres",
-      (value) =>
-        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
-        "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
-    ];
-    const confirmPasswordRules = [
-      (value) => !!value || "Contraseña es requerida",
-      (value) =>
-        value.length >= 8 || "La contraseña debe tener al menos 8 caracteres",
-      (value) =>
-        value === formUser.value.password || "Las contraseñas deben coincidir",
-      (value) =>
-        /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value) ||
-        "Debe contener al menos 1 minuscula, 1 MAYUSCULA, 1 numero",
-    ];
-    return {
-      form,
-      formUser,
-      nameRules,
-      emailRules,
-      passwordlRules,
-      confirmPasswordRules,
-      maxName,
-      minCaracter,
+    const cerrar = () => {
+      if (register.value) {
+        //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
+        router.push("/login");
+      }
+      dialog.value = false;
     };
-  },
-  methods: {
-    login() {
-      const dataUser = {
-        "username": this.formUser.username,
-        "email": this.formUser.email,
-        "password": this.formUser.password,
-        "last_name": this.formUser.name,
+    const rules = computed(() => {
+      return {
+        name: {
+          required: helpers.withMessage(
+            "Nombre y Apellido son requeridos",
+            required
+          ),
+        },
+        dni: {
+          required: helpers.withMessage("DNI es requerido ", required),
+          maxLength: helpers.withMessage(
+            "Debe tener al menos 8 digitos ",
+            minLength(8)
+          ),
+          numeric: helpers.withMessage("Sólo números", numeric),
+        },
+        userName: {
+          required: helpers.withMessage("Username es requerido", required),
+        },
+        email: {
+          required: helpers.withMessage("Email es requerido", required),
+          email: helpers.withMessage("Formato incorrecto", email),
+        },
+        password: {
+          required: helpers.withMessage("Contraseña es requerida", required),
+          minLength: helpers.withMessage(
+            "Debe contener al menos 8 caracteres",
+            minLength(8)
+          ),
+        },
+        confirmPassword: {
+          required: helpers.withMessage("Confirmación es requerida ", required),
+          sameAs: helpers.withMessage(
+            "Deben coincidir",
+            sameAs(formUser.value.password)
+          ),
+        },
       };
-      getAPI.post("api/register/", dataUser).then((data) => {
-        if(data.status === 200){
-          console.log("datos ok => ", data)
+    });
+
+    const v$ = useVuelidate(rules, formUser); //asociacion de datos input con las reglas establecidas
+
+    const singIn = async () => {
+      const dataUser = {
+        username: formUser.value.userName,
+        email: formUser.value.email,
+        fullname: formUser.value.name,
+        dni: formUser.value.dni,
+        password: formUser.value.password,
+      };
+      try {
+        const result = await v$.value.$validate();
+        if (result) {
+          const data = await getAPI.post("/api/register/", dataUser);
+          if (data.status === 200) {
+            message.value = "¡Usuario creado correctamente!";
+            dialog.value = true;
+            register.value = true;
+          } else if (data.status != 200) {
+            dialog.value = true;
+            message.value = "Ocurrio un error al intentar registrar el usuario";
+          }
         }
-      }).catch((error) => {
-        console.log(error)
-      });
-    },
+      } catch (error) {
+        dialog.value = true;
+        message.value = "El nombre del usuario se encuentra en uso";
+        /*error.response.status forma de leer los errores*/
+      }
+    };
+
+    return {
+      singIn,
+      cerrar,
+      formUser,
+      v$,
+      dialog,
+      message,
+    };
   },
 };
 </script>
-<style scoped>
+<style>
 @import "../assets/Styles/StyleSingin.css";
 </style>

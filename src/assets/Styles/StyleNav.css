@@ -14,22 +14,27 @@
 }
 .nav__links{
   height: 100%;
+  align-items: center;
+  text-align: center;
+  display: flex;
 }
 .nav__links ul{
-  margin: 0;
-  padding: 0;
   display: flex;
 }
 .nav__links li{
   list-style: none;
+  color: whitesmoke;
+  cursor: pointer;
+  margin: auto 10px;
 }
 .nav__links li a {
-  display: block;
   text-decoration: none;
-  color: white;
-  padding: 1rem;
+  color: whitesmoke;
 }
 .nav__links a:hover{
+  color: var(--color-three);
+}
+.nav__links li:hover{
   color: var(--color-three);
 }
 .router-link-exact-active{
@@ -63,6 +68,7 @@
   }
   .nav__links ul li{
     text-align: center;
+    align-items: center;
   }
   .nav__links ul li a{
     padding: .5rem 1rem;

@@ -1,44 +1,57 @@
 .login__container {
-  width: 100%;
-  height: 100%;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgb(0, 0, 0);
+  margin: 20px auto;
 }
 .login__container h1 {
   font-family: 'Malibu';
   font-size: 58px;
+  text-align: center;
 }
 .login__container h3 {
   font-family: 'Malibu';
   font-size: 38px;
   animation-delay: 1s;
+  text-align: center;
+
 }
-.login__form {
+.container__form {
   width: 90%;
-  height: 300px; 
-  margin: 50px auto;
   max-width: 500px;
-  padding: 1% 3%;
-  border: 3px solid;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px black;
+  height: 100%; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 50px auto;
+  padding: 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px black;  
 }
-.form__input {
-  width: 100%;
-  margin: 0 auto;
-  font-weight: 500;
+.container__form span{
+  margin-left: 60px;
 }
 .form__btn {
-  margin: 1% auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-weight: 500;
+  width: 120px;
+  height: 40px;
+  margin: 5px auto 5px auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
+}
+.form__btn::before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #a6c1ee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  clip-path: var(--clip);
+  transition: clip-path 1.5s;
+}
+.form__btn:hover::before{
+  clip-path: circle(69% at 50% 50%);
 }
 @import "@/assets/common/FontMalibu.css";

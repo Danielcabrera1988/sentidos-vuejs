@@ -6,17 +6,22 @@
         :src="require('../assets/Img/banner-menu.jpg')"
       />
       <v-img class="qr_img" :src="require('../assets/Img/qr.svg')"></v-img>
-      <h2 class="header__title">Download The Menu</h2>
+      <h2 class="header__title animate__animated animate__lightSpeedInLeft" style="color: gold">Download The Menu</h2>
+
       <p class="header__description">
         "La mejor combinación de sabores la podes encontrar acá. Todos nuestros
-        platos son elavorados con los mal altos estandares de cocina y por
-        personal altamente capacitado."
+        platos son elavorados con los más altos estandares de cocina y por
+        personal altamente capacitado. Una progresión de ingredientes exóticos y
+        hermosos donde la textura, el sabor y la armonía son primordiales.
+        Sumérjase en la experiencia gastronómica de Sentidos con el menú de
+        Peter Gilmore y la lista de vinos cuidadosamente seleccionada por la
+        directora de Fink Wine, Amanda Yallop."
       </p>
     </div>
     <div class="menu__cards">
       <h3 class="menu__title">¡Algunas de nuestas delicias! 😋</h3>
       <p class="menu__description">
-        Si quieres saber más de estas exquisitas comidas, sólo descarga el menu
+        Si quieres saber más de estas exquisitas comidas, nuestros vinos más finos sólo descarga el menu
         completo desde el QR y a disfrutar de una lluvia de exquisitos sabores.
       </p>
       <v-row>
@@ -33,20 +38,11 @@
 
             <v-card-title class="card__name">{{ producto.name }}</v-card-title>
 
-            <v-card-subtitle class="card__price">
+            <v-card-subtitle class="card__price">$
               {{ producto.price }}
             </v-card-subtitle>
 
             <v-card-actions>
-              <v-btn
-                style="font-size: 10px; margin-left: 15px"
-                :icon="producto.state ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                @click="changeShow(producto)"
-                color="orange lighten-2"
-                text
-              >
-                Leer más...
-              </v-btn>
               <v-spacer></v-spacer>
               <v-btn
                 :icon="producto.state ? 'mdi-chevron-up' : 'mdi-chevron-down'"
@@ -73,8 +69,9 @@ import { defineComponent, ref } from "vue";
 import { getAPI } from "../Ax-Api";
 export default defineComponent({
   setup() {
-    const path = "https://alexlopez.pythonanywhere.com/";
+    const path = "https://binarysystem.pythonanywhere.com/";
     const productos = ref([]);
+
     const changeShow = (item) => {
       item.state = !item.state;
     };
@@ -85,8 +82,8 @@ export default defineComponent({
 
     fetchProductos();
     return {
-      productos,
       changeShow,
+      productos,
       path,
     };
   },

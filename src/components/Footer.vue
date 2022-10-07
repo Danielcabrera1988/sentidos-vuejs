@@ -10,8 +10,10 @@
       </a>
     </div>
     <h3>
-      <v-icon>mdi-copyright</v-icon>
-      Binary System 2022
+      <a href="https://binary-system.blogspot.com/" target="blank" id="ref-web-oficial">
+        <v-icon>mdi-copyright</v-icon>
+        Binary System 2022
+      </a>
     </h3>
   </footer>
 </template>

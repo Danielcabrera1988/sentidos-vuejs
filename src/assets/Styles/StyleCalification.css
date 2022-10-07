@@ -1,0 +1,81 @@
+.comment__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+.comment__msg {
+  width: 90%;
+  max-width: 400px;
+  height: 100%;
+  margin: 0 auto;
+}
+.comment__area {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.comment__msg h3 {
+  margin: 5% auto;
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+.comment__calification {
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 3px solid goldenrod;
+  border-radius: 10px;
+}
+.calification {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+.comment__btn__action {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 5% auto;
+  font-weight: 700;
+}
+.btn__effect {
+  width: 120px;
+  height: 40px;
+  margin: 5px auto 5px auto;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  border: 1px solid goldenrod;
+  border-radius: 5px;
+}
+.btn__effect::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #a6c1ee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  clip-path: var(--clip);
+  transition: clip-path 1.5s;
+}
+.btn__effect:hover::before {
+  clip-path: circle(69% at 50% 50%);
+}
