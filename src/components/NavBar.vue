@@ -25,10 +25,10 @@
           <router-link to="/Contacto">Contacto</router-link>
         </li>
         <li v-if="!user">
-          <router-link to="/login">Login</router-link>
+          <router-link to="/login">Ingresar</router-link>
         </li>
         <li v-if="!user">
-          <router-link to="/singin">Sing in</router-link>
+          <router-link to="/singin">Registrarse</router-link>
         </li>
         <li v-if="user" @click="show" class="mdi mdi-view-list">
           {{ user.username }}

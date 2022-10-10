@@ -31,6 +31,7 @@
           v-model="reservaUser.fecha"
           :min="fechaMinima"
           :max="fechaMaxima"
+          
           @change="verificaFechaMinima"
         />
 
@@ -110,6 +111,7 @@
           class="ma-3"
           :counter="maxTel"
           :rules="phoneRules"
+          :min="minTel"
         /><span
           style="color: red"
           v-for="error in v$.tel.$errors"
@@ -195,6 +197,7 @@ export default {
     const fechaMinima = moment().add(1, "days").format("YYYY-MM-DD");
     const fechaMaxima = moment().add(30, "days").format("YYYY-MM-DD");
     const items = ["Desayuno", "Almuerzo", "Merienda", "Cena"];
+    const minTel = ref(8);
     const maxTel = ref(12);
     const phoneRules = [
       (value) => value.length <= 12 || "No puede exceder los 12 caracteres",
@@ -211,7 +214,11 @@ export default {
       if (moment(reservaUser.value.fecha).isSame(fechaMinima)) {
         deshabilitaBtn.value = true;
         flagToPaid.value = true;
-      } else {
+      } else if(moment(reservaUser.value.fecha).isBefore(fechaMinima)){
+        dialog.value = true;
+        message.value = "No puede seleccionar una fecha anterior a la minima de 24 hs posterior a la actual"
+        
+      }else {
         flagToPaid.value = false;
         deshabilitaBtn.value = false;
       }
@@ -356,6 +363,7 @@ export default {
       fechaMaxima,
       flagReserva,
       maxTel,
+      minTel,
       phoneRules,
     };
   },
