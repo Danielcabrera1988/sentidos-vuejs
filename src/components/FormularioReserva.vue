@@ -31,7 +31,7 @@
           v-model="reservaUser.fecha"
           :min="fechaMinima"
           :max="fechaMaxima"
-          
+          onkeydown="return false"
           @change="verificaFechaMinima"
         />
 
@@ -49,7 +49,6 @@
           >{{ error.$message }}</span
         >
         <button class="form__btn" @click="find">Buscar</button>
-       
       </div>
       <!-- Botones de Reservado y Libre -->
       <div class="reserva_selection_show">
@@ -212,11 +211,7 @@ export default {
       if (moment(reservaUser.value.fecha).isSame(fechaMinima)) {
         deshabilitaBtn.value = true;
         flagToPaid.value = true;
-      } else if(moment(reservaUser.value.fecha).isBefore(fechaMinima)){
-        dialog.value = true;
-        message.value = "No puede seleccionar una fecha anterior a la minima de 24 hs posterior a la actual"
-        
-      }else {
+      } else {
         flagToPaid.value = false;
         deshabilitaBtn.value = false;
       }
