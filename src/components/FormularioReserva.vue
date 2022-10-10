@@ -111,7 +111,6 @@
           class="ma-3"
           :counter="maxTel"
           :rules="phoneRules"
-          :min="minTel"
         /><span
           style="color: red"
           v-for="error in v$.tel.$errors"
@@ -135,7 +134,6 @@
 
         <v-btn
           style="width: 100px; margin: 20px auto"
-          :class="computedDate"
           @click="makeReservation"
           :disabled="deshabilitaBtn"
           >Enviar</v-btn
