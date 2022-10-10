@@ -48,8 +48,7 @@
           >{{ error.$message }}</span
         >
         <button class="form__btn" @click="find">Buscar</button>
-        <p>{{ reservaUser.fecha }}</p>
-        <p>{{ fechaMinima }}</p>
+       
       </div>
       <!-- Botones de Reservado y Libre -->
       <div class="reserva_selection_show">
@@ -135,6 +134,7 @@
         <v-btn
           style="width: 100px; margin: 20px auto"
           :class="computedDate"
+          @click="makeReservation"
           :disabled="deshabilitaBtn"
           >Enviar</v-btn
         >
@@ -279,7 +279,7 @@ export default {
     const cerrar = () => {
       if (user.value) {
         //con router redirigimos al usuario logeado hascia la ruta que le indiquemos si todo está ben
-        router.push("/misreservas");
+        router.push("/reservas");
       }
       dialog.value = false;
     };
