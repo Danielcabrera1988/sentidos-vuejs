@@ -287,6 +287,7 @@ export default {
         router.push("/reservas");
       }
       dialog.value = false;
+      window.location.reload();
     };
 
     /* Cargo todas las reservas filtradas por dia y horario */
