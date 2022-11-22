@@ -102,10 +102,8 @@ export default {
         if (result) {
           const data = await getAPI.post("/api/login/", dataUser);
           if (data.status === 200) {
-            store.commit("SET_USUARIO", data.data.user);
-            store.commit("SET_TOKEN", data.data.token);
-            localStorage.setItem("usuario", JSON.stringify(data.data.user));
-            localStorage.setItem("token", JSON.stringify(data.data.token));
+            store.commit("SET_USUARIO", data.data.username);
+            localStorage.setItem("usuario", JSON.stringify(data.data.username));
             message.value = "¡Usuario logeado con éxito!";
             dialog.value = true;
             logged.value = true;

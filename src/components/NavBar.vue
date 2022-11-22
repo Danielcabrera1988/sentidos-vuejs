@@ -31,7 +31,7 @@
           <router-link to="/singin">Registrarse</router-link>
         </li>
         <li v-if="user" @click="show" class="mdi mdi-view-list">
-          {{ user.username }}
+          {{ user }}
           <v-navigation-drawer
             v-model="drawer"
             location="right"
@@ -39,7 +39,7 @@
             :temporary="true"
           >
             <v-list-item
-              prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+              prepend-avatar="https://randomuser.me/api/portraits/men/7.jpg"
               :title="user.username"
               color="white"
             ></v-list-item>
@@ -54,7 +54,7 @@
                 color="goldenrod"
               ></v-list-item>
               <v-list-item
-                prepend-icon="mdi-star"
+                prepend-icon=""
                 to="/calification"
                 title="Califícanos"
                 color="goldenrod"
@@ -64,6 +64,13 @@
                 to="/contacto"
                 title="Contacto Directo"
                 color="goldenrod"
+              ></v-list-item>
+              <v-list-item
+                prepend-icon="mdi-star"
+                href="https://drive.google.com/file/d/1bQrTAT522C60PvXny4D_L3Bsfr2ry7Uo/view?usp=sharing"
+                title="Descarga la App"
+                color="goldenrod"
+                target="_blank"
               ></v-list-item>
             </v-list>
           </v-navigation-drawer>
@@ -88,9 +95,8 @@ export default defineComponent({
   setup() {
     const drawer = ref(false);
     const store = useStore();
-    //la función computed esta constantemente analizando si hay cambios par aactualizarlos
+    //la función computed esta constantemente analizando si hay cambios para actualizarlos
     const user = computed(() => store.getters["getUsuario"]);
-    const token = computed(() => store.getters["getToken"]);
     const show = () => {
       drawer.value = !drawer.value;
     };
@@ -110,15 +116,12 @@ export default defineComponent({
     };
     const cerrarSesion = () => {
       store.commit("SET_USUARIO", null);
-      store.commit("SET_TOKEN", null);
       localStorage.removeItem("usuario");
-      localStorage.removeItem("token");
       window.location.reload();
     };
     return {
       active,
       user,
-      token,
       drawer,
       toggleBtn,
       cerrarSesion,

@@ -76,8 +76,8 @@ export default defineComponent({
       item.state = !item.state;
     };
     const fetchProductos = async () => {
-      const { data } = await getAPI.get("/food/");
-      productos.value = data;
+      const { data } = await getAPI.get("/FoodSentidos/");
+      productos.value = data.data;
     };
 
     fetchProductos();
