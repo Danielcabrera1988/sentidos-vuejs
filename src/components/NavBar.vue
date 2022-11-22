@@ -54,7 +54,7 @@
                 color="goldenrod"
               ></v-list-item>
               <v-list-item
-                prepend-icon=""
+                prepend-icon="mdi-star"
                 to="/calification"
                 title="Califícanos"
                 color="goldenrod"
