@@ -130,6 +130,7 @@ export default {
       email: "",
       password: "",
       confirmPassword: "",
+      role: 5,
     });
     const cerrar = () => {
       if (register.value) {
@@ -187,6 +188,7 @@ export default {
         fullname: formUser.value.name,
         dni: formUser.value.dni,
         password: formUser.value.password,
+        role: 5,
       };
       try {
         const result = await v$.value.$validate();
@@ -196,7 +198,7 @@ export default {
             message.value = "¡Usuario creado correctamente!";
             dialog.value = true;
             register.value = true;
-          } else if (data.status != 200) {
+          } else {
             dialog.value = true;
             message.value = "Ocurrio un error al intentar registrar el usuario";
           }
@@ -207,7 +209,6 @@ export default {
         /*error.response.status forma de leer los errores*/
       }
     };
-
     return {
       singIn,
       cerrar,
