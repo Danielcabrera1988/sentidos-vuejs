@@ -10,7 +10,7 @@
           label="Nombre y Apellido"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.name.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -23,7 +23,7 @@
           label="DNI"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.dni.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -36,7 +36,7 @@
           label="Usuario"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.userName.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -50,7 +50,7 @@
           label="E-mail"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.email.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -64,7 +64,7 @@
           type="password"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.password.$errors"
           :key="error"
           >{{ error.$message }}</span
@@ -78,12 +78,12 @@
           type="password"
           hide-details="false"
         /><span
-          style="color: red;"
+          style="color: red"
           v-for="error in v$.confirmPassword.$errors"
           :key="error"
           >{{ error.$message }}</span
         >
-        <br/>
+        <br />
         <button class="form__btn">Enviar</button>
       </form>
     </div>
@@ -115,7 +115,7 @@ import {
   minLength,
   sameAs,
   helpers,
-  numeric,
+  numeric
 } from "@vuelidate/validators";
 export default {
   setup() {
@@ -129,8 +129,7 @@ export default {
       userName: "",
       email: "",
       password: "",
-      confirmPassword: "",
-      role: 5,
+      confirmPassword: ""
     });
     const cerrar = () => {
       if (register.value) {
@@ -145,7 +144,7 @@ export default {
           required: helpers.withMessage(
             "Nombre y Apellido son requeridos",
             required
-          ),
+          )
         },
         dni: {
           required: helpers.withMessage("DNI es requerido ", required),
@@ -153,29 +152,29 @@ export default {
             "Debe tener al menos 8 digitos ",
             minLength(8)
           ),
-          numeric: helpers.withMessage("Sólo números", numeric),
+          numeric: helpers.withMessage("Sólo números", numeric)
         },
         userName: {
-          required: helpers.withMessage("Username es requerido", required),
+          required: helpers.withMessage("Username es requerido", required)
         },
         email: {
           required: helpers.withMessage("Email es requerido", required),
-          email: helpers.withMessage("Formato incorrecto", email),
+          email: helpers.withMessage("Formato incorrecto", email)
         },
         password: {
           required: helpers.withMessage("Contraseña es requerida", required),
           minLength: helpers.withMessage(
             "Debe contener al menos 8 caracteres",
             minLength(8)
-          ),
+          )
         },
         confirmPassword: {
           required: helpers.withMessage("Confirmación es requerida ", required),
           sameAs: helpers.withMessage(
             "Deben coincidir",
             sameAs(formUser.value.password)
-          ),
-        },
+          )
+        }
       };
     });
 
@@ -188,7 +187,7 @@ export default {
         fullname: formUser.value.name,
         dni: formUser.value.dni,
         password: formUser.value.password,
-        role: 5,
+        role: 5
       };
       try {
         const result = await v$.value.$validate();
@@ -205,7 +204,7 @@ export default {
         }
       } catch (error) {
         dialog.value = true;
-        message.value = "El nombre del usuario se encuentra en uso";
+        message.value = "Error en el post";
         /*error.response.status forma de leer los errores*/
       }
     };
@@ -215,9 +214,9 @@ export default {
       formUser,
       v$,
       dialog,
-      message,
+      message
     };
-  },
+  }
 };
 </script>
 <style>

@@ -18,7 +18,7 @@
   border-radius: 10px;
   box-shadow: 5px 5px 5px black;
 }
-.container__form span{
+.container__form span {
   margin-left: 50px;
 }
 .form__btn {
@@ -31,7 +31,7 @@
   border: 1px solid goldenrod;
   border-radius: 5px;
 }
-.form__btn::before{
+.form__btn::before {
   content: "";
   display: block;
   width: 100%;
@@ -44,7 +44,7 @@
   clip-path: var(--clip);
   transition: clip-path 1.5s;
 }
-.form__btn:hover::before{
+.form__btn:hover::before {
   clip-path: circle(69% at 50% 50%);
 }
 .user__container h3 {
@@ -52,5 +52,9 @@
   font-weight: 100;
   margin: 20px auto;
   text-align: center;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 @import "@/assets/common/FontBluetea.css";

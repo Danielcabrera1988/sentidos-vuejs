@@ -31,7 +31,7 @@
           <router-link to="/singin">Registrarse</router-link>
         </li>
         <li v-if="user" @click="show" class="mdi mdi-view-list">
-          {{ user }}
+          {{ user.username }}
           <v-navigation-drawer
             v-model="drawer"
             location="right"
