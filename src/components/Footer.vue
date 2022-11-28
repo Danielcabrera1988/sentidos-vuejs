@@ -10,7 +10,7 @@
       </a>
     </div>
     <h3>
-      <a href="https://binary-system.blogspot.com/" target="blank" id="ref-web-oficial">
+      <a href="https://alexxxd23.wixsite.com/binary-system" target="blank" id="ref-web-oficial">
         <v-icon>mdi-copyright</v-icon>
         Binary System 2022
       </a>
